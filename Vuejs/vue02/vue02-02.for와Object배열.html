@@ -34,12 +34,69 @@
         Object Arrary를 바인딩하는 방법 학습.
         Object Arrary 예시)
         var objarray = [
-            { text: 'One', value: 'A' },
-            { text: 'Two', value: 'B' },
-            { text: 'Three', value: 'C' }
+        { text: 'One', value: 'A' },
+        { text: 'Two', value: 'B' },
+        { text: 'Three', value: 'C' }
         ];
+
+        // 오른쪽마우스 formet doc 누르면 자동정리
 
     </xmp>
 </body>
 
 </html>
+
+<script>
+
+    var objarray = [
+        { text: 'One', value: 'A' },
+        { text: 'Two', value: 'B' },
+        { text: 'Three', value: 'C' }
+    ];
+
+    //// 1. objarray에 {text : 'Four', value: 'D'}를 추가하시오
+    objarray.push({ text: 'Four', value: 'D' });
+    objarray[objarray.length] = {text : 'Four', value: 'D'};
+
+    //// 2. objarray에서 {text : 'Two', value: 'B'}를 {text : '2', value: '2'}로 바꾸시오
+    //// 찾아서 바꾼다는 개념
+    // objarray.update({ text: 'Two', value: 'B' },)라고 하고 못함.
+    objarray[1]={text : '2', value: '2'} 
+    // 새로운 객체를 만들어서 기존것을 지우는것 - Vue에서 사용
+    objarray[1].text = '2'; 
+    objarray[1].value = '2'; 
+    // 안에 있는 값을 바꾸는것
+
+    //// 3. {text : 'Three', value: 'C'}를 삭제하시오
+    // delete objarray[2]; - delete는 사용안함
+    // objarray.pop(); 중간에 있으면 사용하기 어려움
+    objarray.splice(2, 1);
+
+    //// 4. text가 'One'인 객체들을 찾으시오
+    var arrOne = []; //일반적으로 사용하는 방식
+    for( var i=0; i< objarray.length; i++){
+        var obj = objarray[i];
+        if (obj.text === 'One') {
+            // 'One'이 있는 객체들을 배열에 추가
+            arrOne[arrOne.length] = obj;
+        } else {
+            // 패스
+        }
+    }
+    var arrOne2 = objarray.filter(function (item, index) { // 앞으로 사용해야하는 방식
+        if (item.text === 'One') {
+            return true
+        }
+        else {
+            return false
+        }
+    })
+    // }).map(function(item,index){
+    //     return item ();
+    // }
+
+    colsole.log('arrOne2', arrOne2); //[]
+
+    debugger
+
+</script>
