@@ -36,7 +36,8 @@
     <div id="app">
         {{ message }}
         <!-- 버튼 기능 추가-->
-
+        <input v-model:value="msg"> 
+        <button v-on:click="clickBtn">클릭 이벤트</button>
     </div>
 
     
@@ -44,4 +45,52 @@
 
 </html>
 
+
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    var vm = new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            message: "Hello Vue.js!",
+            msg : "",
+        },
+        //template: ``,
+        methods: {
+            clickBtn: function(event){
+                console.log(event.target);
+                // this.$data.message = "김다빈";
+
+                // this.$data.message = this.$data.msg;
+                // this.$data.msg = '';
+
+                // this.$set ( this.$data, "message", "김다빈");
+            }
+        },
+        components: {
+    
+        }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        beforeCreate: function() { console.log("beforeCreate"); },
+        created: function() { console.log("created");},
+        beforeMounte: function() { console.log("beforeMounte");},
+        mounted: function() { console.log("mounted");},
+        beforeUpdate: function() { console.log("beforeUpdate");},
+        updated: function() {  console.log("updated"); },
+    });
+
+    // vm.$data.message = "abc"; 
+    // vm을 var로 변수지정 해줘서 주소를 주었다고 생각하면 됨
+    
+</script>

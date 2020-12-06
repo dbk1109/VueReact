@@ -49,15 +49,61 @@
     <hr>
 
     <div id="app">
-        <input v-model:value="message">
+        <input v-model:value="message"> <!--keyup과 v-bind가 기본으로 들어가있음,-->
         <button v-on:click="reverseMsg">문자열 역순</button>
         <p> </p>
         <p>methods 속성을 이용한 수동 반영: <span>{{ methodscopy }}</span></p>
         <p>watch 속성을 자동 반영: <span>{{ watchcopy }}</span></p>
-        <p>computed 속성을 자동 반영: <span>{{ computedcopy }}</span></p>
+        <p>computed 속성을 자동 반영: <span>{{ computedcopy }}</span></p> <!-- 얘만 data 등록X-->
     </div>
 </body>
 
 </html>
 
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            message: "Hello, Vue.js !!!",
+            methodscopy: "",
+            watchcopy: "",
+        },
+        //template: ``,
+        methods: {
+            reverseMsg: function(event){
+                console.log(event.target);
+                // this.$data.message.split(' ').reverse().join(' ');
+                this.$set(this.$data, "methodscopy", this.$data.message.split(' ').reverse().join(' '))
+            }
+        },
+        components: {
+    
+        }, 
+        computed: {
+            computedcopy : function() {
+                var dt = new Date().toLocaleString();
+                return this.$data.message + " " + dt; // 반드시 리턴이 필요함
+            }
+        },
+        watch: {
+            message: function(value) { // this.$data.message 가 변하면 그 값(value)을 가져옴.
+                this.$data.watchcopy = value;
+            }
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+    
+</script>

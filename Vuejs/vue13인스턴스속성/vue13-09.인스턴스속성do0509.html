@@ -37,7 +37,14 @@
       문제 1. 각자
         v-on 지시자를 사용하여 input 태그에 값이 입력 될때마다
         input 태그의 value 속성값을 console.log로 출력하시오.
+
         event.target ==> input 태그를 의미한다.
+        태그는 자바스크립트의 객체가 된다. 속성은 객체의 프로퍼티가 된다.
+
+        자바스크립트에서 input 태그의 calue 속성에
+        입력된 값을 어떻게 가져올 수 있을까?
+        예시) <input type="text" value="aaa">
+        => event.target.value => "aaa"
 
         페이지 107 참고.
         methods : {
@@ -45,17 +52,77 @@
               console.log(event);
             }
         }
-      문제 2. 같이
-        watch 속성을 이용하여 data 속성의 변화를 감지하여 console.log로 출력하시오.
+
+      문제 2. 각자
+        data 속성의 변화를 감지하여 console.log로 출력하시오.
+
+      문제 3. 같이
+        computed 속성을 이용하여 입력된 값을 화면에 출력되게 하시오
+
+      문제 4. 같이
+      watch 속성을 이용하여 입력된 값을 화면에 출력되게 하시오
+          
 
     </xmp>
     <hr>
     <div id="app">
-        <input type="text" name="message" id="message" v-on:keyup="msgKey">
-    </div>
+        <input type="text" name="message" id="message" v-on:keyup="msgKey" > <!-- value="" 이 숨어있음-->
+        <br /> <span>data 속성을 이용해서 화면 표시 : {{mesg1}}</span>
+        <br /> <span>computed 속성을 이용해서 화면 표시 : {{mesg2}}</span>
+        <br /> <span>watch 속성을 이용해서 화면 표시 : {{mesg3}}</span>
+      </div>
 
 </body>
 
 </html>
 
+
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+          mesg1: "",
+          mesg3: "",
+        },
+        //template: ``,
+        methods: {
+          msgKey: function(event){
+            console.log(event.target.value); 
+            this.$set(this.$data, "mesg1", event.target.value);
+          }
+        },
+        components: {
+    
+        }, 
+        computed: {
+          mesg2: function(){
+            // 자동처리 + 동기식
+            return this.$data.mesg1 + " computed에서 생성"; // 반드시 return
+          }
+        },
+        watch: { //실시간 연동시 watch가 제일 무난
+          mesg1: function(value){
+            // 자동처리 + 비동기식
+            // value는 this.$data.mesg1이 변경되었을 때만 전달되는 값
+            // watch가 사용될 수 잇는 실제 예제
+            // 회원가입시 사용가능/불가능 아이디 표시
+            this.$data.mesg3 = value + " watch에서 생성"; // watch는 data property에 등록된 변수를 모니터링.
+          }
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+    
+</script>
