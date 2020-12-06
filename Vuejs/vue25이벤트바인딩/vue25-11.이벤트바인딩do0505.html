@@ -82,11 +82,11 @@
             },
             clickBtn10: function(event) {
                 console.log(event.target);
-                // data- 속성으로 전달되는 값은 dataSet으로 받을 수 있다.
-                // event.target.dataSet.이름
+                // data- 속성으로 전달되는 값은 dataset으로 받을 수 있다.
+                // event.target.dataset.이름
                 // data-num="10" ==> event.target.dataSet.num
                 debugger;
-                var val = event.target.dataSet.times;
+                var val = event.target.dataset.times;
                 var num = Number(val);
 
                 this.$set(this.$data, 'sum10', this.$data.sum10 + num );
