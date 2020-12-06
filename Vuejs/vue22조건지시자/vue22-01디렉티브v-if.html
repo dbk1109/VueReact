@@ -50,16 +50,16 @@
 
     <h2>
         v-if 연습 1. 
-        #app1 인스턴스 data 프로퍼티(속성) awesome 에 어떤값을 설쟁하면 될까? 
+        #app1 인스턴스 data 프로퍼티(속성) awesome 에 어떤값을 설정하면 될까? 
     </h2>
     <div id="app1">
-        <h3 v-if="awesome">Vue is awesome!</h3>
+        <h3 v-if="awesome">Vue is awesome!</h3> <!-- true면-->
         <h3 v-else>Oh no 😢</h3>
     </div>
 
     <h2>
         v-else 연습 2
-        #app2 인스턴스 data 프로퍼티(속성) awesome 에 어떤값을 설쟁하면 될까?
+        #app2 인스턴스 data 프로퍼티(속성) awesome 에 어떤값을 설정하면 될까?
     </h2>
     <div id="app2">
         <h3 v-if="awesome">Vue is awesome!</h3>
@@ -86,7 +86,7 @@
 
     <h2>v-if/v-else-if/v-else 연습 4 : 실습</h2>
     <div id="app5">
-        <button v-on:click="clickBind">클릭</button>
+        <button v-on:click="clickBind">클릭</button> <!-- html로 보이지만 최종은 javascript라고 봐야함-->
         <span v-if="type === 1">
             A
         </span>
@@ -104,4 +104,76 @@
 
 </html>
 
+
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app1",
+        data: {
+            awesome: true,
+        },
+        // html에 랜더링이 되지 않음.
+    });
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app2",
+        data: {
+            awesome: false,
+        },
+    });
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app3",
+        data: {
+            awesome: true,
+            // abc: 123, 데이터는 무조건 true라서
+        },
+        //template: ``,
+        methods: {
+            clickBind: function(event){
+                console.log(event.target);
+                this.$set(this.$data, "awesome", !this.$data.awesome); 
+            }
+        },
+    });
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app5",
+        data: {
+            type : 0,
+        },
+        //template: ``,
+        methods: {
+            clickBind: function(event){
+                console.log(event.target);
+                if (this.$data.type === 0) {
+                    this.$set( this.$data, "type", this.$data.type + 1 )
+                } 
+                else if (this.$data.type === 1) {
+                    this.$set( this.$data, "type", this.$data.type + 1 )
+                } 
+                else if (this.$data.type === 2) {
+                    this.$set( this.$data, "type", this.$data.type + 1 )
+                } 
+                else if (this.$data.type === 3) {
+                    this.$set( this.$data, "type", 0 )
+                }
+            }
+            /* 
+            var val = (this.$data.type+1) % 4;
+            this.$set(this.$data, 'type', val);
+            */
+        },
+    });
+</script>

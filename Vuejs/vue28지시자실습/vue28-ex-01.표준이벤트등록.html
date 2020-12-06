@@ -67,12 +67,12 @@
         </xmp>
         <ul>
             <li>
-                <a class="image3" href="../images/image3.jpg">
+                <a class="image3" v-on:click="pet" href="../images/image3.jpg">
                     강아지 사진
                 </a>
             </li>
             <li>
-                <a class="image3" href="../images/image4.jpg">
+                <a class="image3" v-on:click="pet"  href="../images/image4.jpg">
                     고양이 사진
                 </a>
             </li>
@@ -90,11 +90,11 @@
             이미지 위에 마우스를 내리면(mouseout ) ==> ../images/but1.gif , ../images/img_swap_off.png
             이미지 위에 마우스를 올리면(mouseover) ==> ../images/but2.gif , ../images/img_swap_on.png
         </xmp>
-        <img v-bind:src="img_but1" id="but1" />
-        <img v-bind:src="img_swap" id="img-swap" />
+        <img v-bind:src="img_but1" v-on:click="imageover"  id="but1" />
+        <img v-bind:src="img_swap" v-on:click="imageover"  id="img-swap" />
         <hr />
 
-        <xmp>
+        <!-- <xmp>
             span에 mouseover 이벤트 핸들러를 작성하시오. ==> spanmouseover. background-color를 yellow로 설정
             span에 mousedown 이벤트 핸들러를 작성하시오. ==> spanmousedown. background-color를 blue로 설정
             span에 mouseup 이벤트 핸들러를 작성하시오. ==> spanmouseup. background-color를 pink로 설정
@@ -128,15 +128,57 @@
             blur 이벤트 핸들러 ==> inputblur. outline: none 설정
         </xmp>
         <input type="text" id="ID" />
-        <hr />
+        <hr /> -->
 
     </div>
-    
 
-    
 </body>
 
 </html>
 
 <!-- vue 플러그인 임포트   -->
-
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            img_image3: '',
+            img_but1: '',
+            img_swap: '',
+        },
+        //template: ``,
+        methods: {
+            pet: function(event) {
+                console.log(event.target);
+                event.preventDefault();
+                this.$set(this.$data, 'img_image3', event.target.href);
+            },
+            imageover: function(event){
+                console.log(event.target);
+            }
+        },
+        components: {
+    
+        }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+    
+</script>
+

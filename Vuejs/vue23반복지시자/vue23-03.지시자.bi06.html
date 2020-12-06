@@ -11,16 +11,34 @@
 
     <!-- CSS import -->
     <link rel="stylesheet" href="../css/reset.css">
+    <style>
+        #newLine {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
     <pre>
 
       v-for 지시자를 사용하여 자신이 좋아하는 가수들을 출력하는 테이블을 작성하여 본다.
+
+      1. Object Array를 만들어 화면과 같이 표시되게 하시오
+      <img src="./singerarray.png">
+
+      2. 추가 버튼 만들어 클릭이벤트 설정
+      3. 추가 버튼 클릭시 행 추가
+      
+      4. input태그 3개를 추가 하고 추가버튼 클릭하면 
+      해당 입력값을 이용해 객체를 만들어 object array에 추가
     </pre>
     <hr>
 
     <div id="app" class="col-md-10 offset-md-1">
+        <label for="">이름</label><input v-model:value="name"></input>
+        <label for="">전화번호</label><input v-model:value="tel"></input>
+        <label for="">주소</label><input v-model:value="address"></input>
+
         <table id="list" class="table-bordered">
             <thead>
                 <tr class="bg-warning text-white text-center">
@@ -39,13 +57,61 @@
                 </tr>
             </tbody>
         </table>
+        <button v-on:click="addList">자동추가</button>
     </div>
-
-
-    
-
 </body>
 
 </html>
 
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    var oldList = new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            contacts: [
+                {name: '캐평', tel: '010-1992-1104', address: '서울'},
+                {name: '천지', tel: '010-1993-1005', address: '군대'},
+            ],
+            name: '',
+            tel: '',
+            address: '',
+        },
+        //template: ``,
+        methods: {
+            addList: function(event) {
+                console.log(event.target);
+                // this.$set( this.$data.contacts, 방번호, 값)
+
+                // 유효성 검사
+                // 숫자인지 아닌지 등
+
+                // 객체 생성
+                var member = {
+                    name: this.$data.name,
+                    tel: this.$data.tel,
+                    address: this.$data.address,
+                }
+
+                this.$set(this.$data.contacts, this.$data.contacts.length, member);
+                
+                // 내가한거
+                // var niel = [ ...this.$data.contacts, {name: '니엘', tel: '010-1994-0816', address: '안양'}]; 
+                // this.$set(this.$data, "contacts", niel);
+            }
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+    
+</script>
