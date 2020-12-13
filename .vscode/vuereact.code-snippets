@@ -161,5 +161,14 @@
             "</script>"
         ],
         "description": "Vue plugin import"
+    }, 
+    "function event import": {
+        "prefix": "fe",
+        "body": [
+            "function(event) {"
+            "    console.log(event.target);"
+            "}"
+        ],
+        "description": "Vue plugin import"
     }
 }

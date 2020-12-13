@@ -76,7 +76,7 @@
 
         #example3tobe {
             border: 1px dashed blue;
-            width: 150px;
+            width: 200px;
         }
     </style>
     <div id="example3">
@@ -135,4 +135,104 @@
 
 </html>
 
+
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#example3",
+        data: {
+            style1: null,
+        },
+        //template: ``,
+        methods: {
+            clickArrow: function(event){
+                console.log(event.target);
+                /*
+                    height: 50px;
+                    width: 150px;
+                    border: 1px solid black;
+                    text-align: center;
+                    line-height: 50px;
+                    font-weight: 800;
+                    color: red;
+                    background-color: darkgoldenrod;
+                    padding: 50px;
+                */
+               var obj = {
+                    height: "50px",
+                    width: "200px",
+                    border: "1px solid black",
+                    textAlign: "center",
+                    lineHeight: "50px",
+                    fontWeight: "800",
+                    color: "red",
+                    backgroundColor: "darkgoldenrod",
+                    padding: "50px",
+               }
+               //this.$data.style1 = obj;
+               this.$set( this.$data, "style1", obj);
+            }
+        },
+        components: {
+    
+        }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+    debugger;
+    new Vue({
+        /* edtmc^2w */
+        el: "#elvue",
+        data: {
+            style1: null,
+        },
+        //template: ``,
+        methods: {
+            overEvent(this): function(event) {
+                console.log(event.target);
+                var over = {
+                    backgroundColor : "purple",
+                    color: "yellow"
+                };
+                var out = {
+                    backgroundColor : "aqua",
+                    color : "black"
+                };
+                this.$set(this.$data, "style1", over);
+            }
+        },
+        components: {
+    
+        }, 
+        computed: {
+    
+        },
+        watch: {
+    
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+    
+</script>
