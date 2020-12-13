@@ -165,7 +165,7 @@
         "body": [
             "function(event) {"
             "    console.log(event.target);"
-            "}"
+            "},"
         ],
         "description": "Vue plugin import"
     }
