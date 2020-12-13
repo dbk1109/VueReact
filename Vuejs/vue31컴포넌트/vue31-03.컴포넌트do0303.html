@@ -65,20 +65,25 @@
 <script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
 <script>
-    Vue.component("vue31-03.컴포넌트do0303", { 
+    // 전역 컴포넌트 만들기
+    Vue.component("global-component", { 
         /* pdtmc^2w */
-        props: [] ,
+        props: ["propsdata"] ,
         data: function() {
-            return { }
+            return { 
+            }
         },
         template: `
-            <div>
-                전역 컴포넌트
-                <button onclick="gclick">{{propsdata}}</button>
-            </div>
+        <div>
+            전역 컴포넌트
+            <button v-on:click="gclick">{{propsdata}}</button>
+        </div>
         `,
         methods: {
-    
+            gclick: function(event){
+                console.log(event.target);
+                alert( event.target.innerText );
+            }
         },
         components: {
     
@@ -91,26 +96,31 @@
         },
     });
     
-    
-    // 지역컴포넌트
-    var vue31-03.컴포넌트do0303 = { 
+
+    // 지역 컴포넌트 만들기
+    var aaaa = { 
         /* pdtmc^2w */
-        props: [] ,
+        props: ["localmsg"] ,
         data: function() {
             return { }
         },
         template: `
-            <div>
-                지역 컴포넌트가 등록되었습니다!
-                <span style="border: 1px dashed blue; background-color:lightgray; padding: 5px;" onclick="lclick">
-                    {{localmsg}}
-                </span>
-            </div>
+        <div>
+            지역 컴포넌트가 등록되었습니다!
+            <span style="border: 1px dashed blue; background-color:lightgray; padding: 5px;" 
+                  v-on:click="lclick">
+                {{localmsg}}
+            </span>
+        </div>
         `,
         methods: {
-            
+            lclick: function(event) {
+                console.log(event.target);
+                alert(event.target.innerText);
+            }
         },
         components: {
+    
         },
         computed: {
     
@@ -120,24 +130,28 @@
         },
     };
     
-    // 인스턴스
 
+
+    // 인스턴스 만들기
     new Vue({
         /* edtmc^2w */
         el: "#app",
         data: {
-            globalmsg1: '전역 메세지 1',
-            globalmsg2: '전역 메세지 2',
-            localmsg1: '로컬 메세지 1',
-            localmsg2: '로컬 메세지 2',
+            globalmsg1: "전역 메세지 1",
+            globalmsg2: "전역 메세지 2",
+            localmsg1: "로컬 메세지 1",
+            localmsg2: "로컬 메세지 2",
         },
         //template: ``,
         methods: {
     
         },
         components: {
-            // 지역 컴포넌트는 vue 인스턴스에 등록해야한다
-            // 작성규칙 = 태그명 : 지역컴포넌트변수명 , 
+            /* 지역 컴포넌트는 vue 인스턴스에 등록해야 한다.
+                작성규칙: "태그명" : 지역컴포넌트변수명 , 
+                예시) "???" : ??? ,
+            */
+            "local-component" : aaaa ,
         }, 
         computed: {
     
