@@ -148,8 +148,6 @@
     "Vue plugin import": {
         "prefix": "vueplugin",
         "body": [
-            "",
-            "<!-- vue 플러그인 임포트   -->",
             "<script src=\"https://unpkg.com/vue@2.5.16/dist/vue.js\">/* vue 플러그인 임포트 */</script>",
             "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js\"> /* JSX를 자바스크립트로 변환 */</script>",
             "<script src=\"https://unpkg.com/vuex@3.3.0/dist/vuex.js\"> /* vuex 플러그인 임포트 */</script>",

@@ -33,7 +33,6 @@
         <select></select>
         <textarea></textarea>
 
-
         사용 예시)
         속성 없이 v-model만도 사용 가능하다.
         v-model:checked
@@ -60,7 +59,7 @@
         <hr>
 
         <div>
-            <input type="checkbox" id="checkbox" v-model:checked="checked">
+            <input type="checkbox" id="checkbox" v-model:checked="checked"> <!-- v-model="checked"로 사용해도 자동으로 v-model:checked로 인식함  -->
             <label for="checkbox">{{ checked }}</label>
         </div>
         <hr>
@@ -114,3 +113,29 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app3",
+        data: {
+            name: null, // 아무것도 안해도 이상태로도 작동함
+            message: null,
+            checked: true,
+            checkedNames: [], //배열로 안하면 체크했을때 전체 체크 전체해제가 됨.
+            picked: null,
+            selected: null,
+            options: [ // selected로 연동하는거
+                {text: 'One', value: 'A'},
+                {text: 'Two', value: 'B'},
+                {text: 'Three', value: 'C'},
+            ]
+        },
+    });
+    
+</script>

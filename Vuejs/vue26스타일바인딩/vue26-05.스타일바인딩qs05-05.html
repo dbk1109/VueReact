@@ -33,7 +33,7 @@
             baseStyles and overrideStyles
         </p>
 
-        multi style binding:
+        multi style binding: 할때는 []로 배열처리 한다
         ------------------
         new Vue({
             data : {
@@ -104,6 +104,8 @@
     </style>
     <div id="example3">
         <h2> v-bind:class 를 사용한 예제 </h2>
+        <!-- v-model을 사용할 수 있는 태그 : 입력 받는 태그 (input, textarea, select) 
+        input[value]/input[checked]/textarea[value]/selcet[selected]-->
         <button id="btn1" v-bind:class="mystyle">버튼1</button>
         <p>
             <input type="checkbox" v-model="mystyle.set1" value="true" />set1 디자인<br />
@@ -127,3 +129,75 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"> /* JSX를 자바스크립트로 변환 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vue-router@3.1.6/dist/vue-router.js"> /* vue 라우터 플러그인 임포트 */</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /* jQuery library */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        // 컴포넌트를 재사용할때 수정없이 쓸 수 있도록 해야한다.
+        el: "#example1",
+        data: {
+            myColor: {
+                backgroundColor: 'aqua',
+                color: 'purple',
+            }
+        },
+    });
+    new Vue({
+        /* edtmc^2w */
+        el: "#example2",
+        data: {
+            myColor: {
+                backgroundColor: 'aqua',
+                color: 'purple',
+            },
+            myLayout: {
+                width: '150px',
+                height: '80px',
+                textAlign: 'center',
+            }
+        },
+    });
+    new Vue({
+        /* edtmc^2w */
+        el: "#example3",
+        data: {
+            mystyle: {
+                set1 : {
+                    backgroundColor: 'aqua',
+                    color: 'purple',
+                },
+                set2 : {
+                    textAlign: 'center',
+                    width: '120px',
+                },
+                set3 : {
+                    border: 'sandybrown dashed 5px',
+                },
+            }
+        },
+    });
+    new Vue({
+        /* edtmc^2w */
+        el: "#example4",
+        data: {
+            mystyle: {
+                set1 : {
+                    backgroundColor: 'aqua',
+                    color: 'purple',
+                },
+                set2 : {
+                    textAlign: 'center',
+                    width: '120px',
+                },
+                set3 : {
+                    border: 'sandybrown dashed 5px',
+                },
+            }
+        },
+    }); 
+</script>
