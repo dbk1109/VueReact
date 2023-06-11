@@ -78,3 +78,30 @@
   </body>
 
 </html>
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+  new Vue({
+    /* edtmc^2w */
+    el: '#app1',
+    data: {
+      /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+      message: '<i>콧수염 괄호를 이용한 데이터 출력</i>'
+    },
+  });
+
+  new Vue({
+    /* edtmc^2w */
+    el: '#app2',
+    data: {
+      /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+      message2: 'abc'
+    },
+    template: `
+    <i>template 속성을 이용한 데이터 출력. {{message2}} </i>
+    `,
+  });
+
+</script>
