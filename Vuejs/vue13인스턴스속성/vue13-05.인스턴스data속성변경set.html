@@ -130,9 +130,27 @@
       /* 이벤트 핸들러 등록 + 일반 함수 */
       change0(e) {
         console.log(e.target);
+        console.log(this.$data.arr);
+
+        //  즉, this.$data.arr[0]=100; 과 같이 바꾸면 값은 바뀌지만
+        // 화면에 rendering 되지 않는 문제 발생.
+        this.$data.arr[0] = 100;
+        debugger;
+        console.log(this.$data.arr);
       },
       change1(e) {
         console.log(e.target);
+        // this.$data.arr[0] = 100;
+
+        // splice 메서드 는 복제후 할당 방식으로 처리
+        // splice 메서드를 이용하여 복제 후 할당 처리
+        // this.$data.arr.splice(0, 1, 100);
+        // console.log(this.$data.arr); // [100, 2, 3, 4, 5]
+
+        // spread 연산자를 이용하여 복제 후 할당 처리
+        const newarr = this.$data.arr.splice(1); // [2, 3, 4, 5]
+        this.$data.arr = [100, ...newarr];
+        console.log(this.$data.arr); // [100, 2, 3, 4, 5]
       },
       change2(e) {
         console.log(e.target);
