@@ -43,3 +43,27 @@ let lakes = ['경포호', '화진포', '송지호', '청초호'];
 let [first, ...rest] = lakes; // ...rest : rest 연산자
 console.log(first); // "경포호"
 console.log(rest); // ["화진포", "송지호", "청초호"]
+
+let [city1, ...cityrest] = [...east, ...west];
+// ...cityrest: rest 연산자  , [...east, ...west] : spread 연산자
+console.log(cityrest); // ["K", "T", "N", "C", "G"]
+
+const car1 = {
+  type: 't1',
+  color: 's1',
+  model: 2017,
+};
+const car2 = {
+  type: 't2',
+  color: 's2',
+  model: 2019,
+};
+
+const { type } = car1; // t1
+console.log(type); // t1
+// { type } = { ...car1, ...car2 }
+const func = function ({ type }) {
+  console.log(type); // t2
+  debugger;
+};
+func({ ...car1, ...car2 });

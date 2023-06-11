@@ -29,7 +29,7 @@ w5(); // xxxx
 const car = {
   type: 't',
   color: 'S',
-  model: 2021
+  model: 2021,
 };
 
 // ES5
@@ -40,6 +40,6 @@ console.log(type1, color1, model1);
 
 // 객체 분해 할당 을 이용해서 type ,color ,model 을 만드시오
 // 객체 분해 할당은 객체의 프로터티 명을 이용해서 매핑한다.
-const { type:type, color:color, model:model, gear:gear } = car;
+// const { type:type, color:color, model:model, gear:gear } = car;
 const { type, color, model, gear } = car;
 console.log(type, color, model, gear); // t S 2021 undefined
