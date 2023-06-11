@@ -1,5 +1,5 @@
-#  Vue.js 와 React.js 를 활용한 프론트엔드 웹개발 과정
-- 훈련기관 : 티아이에스정보기술교육센터학원
+#  Vue 와 React 를 활용한 프론트엔드 웹개발 과정
+- 훈련기관 : 티아이에스 정보 기술 교육 센터 학원
 - 훈련기간 : 2023-06-04 ~ 2023-07-16 (3회차)
 - 수업자료 다운로드: <a target="_blank" href="https://drive.google.com/file/d/1xGkjCzlq7qsto_Kf70VBYG1mVEaC6DGA/view?usp=drive_link">drive.google.com</a>
 
