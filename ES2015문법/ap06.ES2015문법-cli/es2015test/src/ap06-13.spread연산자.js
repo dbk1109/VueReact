@@ -64,6 +64,22 @@ console.log(type); // t1
 // { type } = { ...car1, ...car2 }
 const func = function ({ type }) {
   console.log(type); // t2
-  debugger;
 };
 func({ ...car1, ...car2 });
+
+const moring = {
+  breacfast: '미역국',
+  lunuch: '삼치구이',
+};
+const dinner = '스테이크';
+const meals = { ...moring, dinner /*  dinner: dinner */ };
+console.log(meals); // meals 에 출력되는 값은 무엇인가?
+
+// props 에 출력되는 값은 무엇인가?
+function childComponent(...props) {
+  // callee
+  console.log(props); // props 에 출력되는 값은 무엇인가?
+  debugger;
+}
+const message = 'passed from Parent Component';
+childComponent(...message); // caller
