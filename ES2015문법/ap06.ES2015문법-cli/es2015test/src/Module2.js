@@ -12,3 +12,8 @@
 */
 
 // Module2.js
+import b from './Module1.js';
+console.log(b); // 2
+
+import { a, c } from './Module1.js';
+console.log(a, c); // 1, 3

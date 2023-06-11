@@ -5,3 +5,14 @@
   1. 다중 문자열 만들 때
   2. 변수 치환
 */
+const string1 = '안녕하세요';
+const string2 = '반갑습니다';
+
+const str = `
+  a
+
+  b
+  134
+
+  ${string1} ,  ${string2}
+`;
