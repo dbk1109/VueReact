@@ -20,5 +20,5 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 // Module2.js
 
 console.log(_Module["default"]); // 2
-
+debugger;
 console.log(_Module.a, _Module.c); // 1, 3
