@@ -71,8 +71,8 @@ Windows 10 이상 사용자인 경우, <a target="_blank" href="https://docs.mic
 
 ### 수업 영상 자료
 
-[es2015 수업 영상](https://youtu.be/5zBmgLhiIRM)
-[vue의 MVVM 원리](https://www.youtube.com/watch?v=WPqj8LMYz8g)
+- [es2015 수업 영상](https://youtu.be/5zBmgLhiIRM)
+- [vue의 MVVM 원리](https://www.youtube.com/watch?v=WPqj8LMYz8g)
 
 
 
