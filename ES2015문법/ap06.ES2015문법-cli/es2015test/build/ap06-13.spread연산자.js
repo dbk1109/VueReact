@@ -19,3 +19,4 @@
     iterator를 생성해서 next()로 순회할 수 있는 자료구조가 이터러블
 
 */
+"use strict";
