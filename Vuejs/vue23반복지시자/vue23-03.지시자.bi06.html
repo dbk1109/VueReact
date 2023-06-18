@@ -53,6 +53,16 @@
 
     <div id="app"
       class="col-md-10 offset-md-1">
+      <label for="">이름</label>
+      <input v-model:value="name"
+        placeholder="이름을 입력하세">
+      <label for="">전화번호</label>
+      <input v-model:value="tel"
+        placeholder="전화번호을 입력하세">
+      <label for="">주소</label>
+      <input v-model:value="address"
+        placeholder="주소를 입력하세">
+
       <button v-on:click='btnAddClick'>추가</button>
       <table id="list"
         class="table-bordered">
@@ -92,6 +102,9 @@
         { name: '설현', tel: '010-3456-8200', address: '서현' },
         { name: '혜리', tel: '010-3456-8299', address: '서리' },
       ],
+      name: null,
+      tel: null,
+      address: null,
     },
     //template: ``,
     methods: {
@@ -102,7 +115,12 @@
 
         // 배열에 추가하시오.
         // push() 메서드, spread 연산자.
-        this.$data.contacts.push({ name: '혜리', tel: '010-3456-8299', address: '서리' });
+        const obj = {
+          name: '혜리',
+          tel: '010-3456-8299',
+          address: '서리'
+        };
+        this.$data.contacts.push(obj);
       }
     },
     components: {
