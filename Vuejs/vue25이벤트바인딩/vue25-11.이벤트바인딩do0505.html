@@ -33,7 +33,6 @@
     예제2. v-on 과 v-bind 지시자를 추가하여 기능을 완성하시오.
     예제3. v-on 과 v-bind 지시자를 추가하여 기능을 완성하시오.
 
-    [참조]page 105, 106, 107
     </xmp>
     <hr>
 
@@ -65,3 +64,41 @@
   </body>
 
 </html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+  new Vue({
+    /* edtmc^2w */
+    el: '#app',
+    data: {
+      /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+      sum1: 0,
+      numInput: 0,
+      sumInput: 0,
+      sum10: 0,
+    },
+    //template: ``,
+    methods: {
+      /* 이벤트 핸들러 등록 + 일반 함수 */
+      clickBtn1(e) {
+        console.log(e.target);
+        debugger;
+        this.$data.sum1 = this.$data.sum1 + 1;
+      },
+      clickBtnInput(e) {
+        console.log(e.target);
+        debugger;
+        this.$data.sumInput = this.$data.sumInput + Number(this.$data.numInput);
+      },
+      clickBtn10(e) {
+        console.log(e.target);
+
+        const num = e.target.dataset.num;
+        debugger;
+        this.$data.sum10 = this.$data.sum10 + Number(num);
+      },
+    },
+  });
+
+</script>
