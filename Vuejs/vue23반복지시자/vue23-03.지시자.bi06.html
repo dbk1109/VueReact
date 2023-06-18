@@ -116,11 +116,16 @@
         // 배열에 추가하시오.
         // push() 메서드, spread 연산자.
         const obj = {
-          name: '혜리',
-          tel: '010-3456-8299',
-          address: '서리'
+          name: this.$data.name,
+          tel: this.$data.tel,
+          address: this.$data.address,
         };
         this.$data.contacts.push(obj);
+
+        // 입력된 값 초기화 기능 추가
+        this.$data.name = null;
+        this.$data.tel = null;
+        this.$data.address = null;
       }
     },
     components: {
