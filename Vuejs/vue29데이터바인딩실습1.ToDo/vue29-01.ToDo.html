@@ -345,3 +345,60 @@
   </body>
 
 </html>
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+  new Vue({
+    /* edtmc^2w */
+    el: '#app',
+    data: {
+      /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+      newTodoItem: null,
+      showModal: false,
+      todoItems: [
+        { id: 1, todo: "영화보기", done: false },
+        { id: 2, todo: "주말 산책", done: true },
+        { id: 3, todo: "ES6 학습", done: false },
+        { id: 4, todo: "잠실 야구장", done: false }
+      ],
+    },
+    //template: ``,
+    methods: {
+      /* 이벤트 핸들러 등록 + 일반 함수 */
+      clearAll(e) {
+        console.log(e.target);
+        debugger;
+        this.$data.todoItems = [];
+      },
+      checked(done) {
+        // todoItem.done ? 'checked':null
+        if (done)
+          return 'checked';
+
+        return null;
+      },
+      doneToggle(id) {
+        // 복제 후 할당 처리 방식.
+        // 1. 새로운 배열 만들기. map 사용
+        // 2. this.$data.todoItems 에 새로운 배열 할당하기
+        const newarr = this.$data.todoItems.map((value, index, array) => {
+          debugger;
+          if (value.id === id)
+            value.done = !value.done;
+
+          return value;
+        });
+
+        this.$data.todoItems = newar;
+      },
+      removeTodo(id) {
+
+      },
+      addTodo(e) {
+        console.log(e.target);
+      }
+    },
+  });
+
+</script>
