@@ -15,6 +15,6 @@ for (const i of objarray) {
   console.log('v-for 지시자는 ', i);
 }
 // i === {text, value}
-for (const {text, value} of objarray) {
+for (const { text, value } of objarray) {
   console.log('v-for 지시자는 ', text, value);
 }
