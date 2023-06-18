@@ -159,8 +159,19 @@
     el: '#app4',
     data: {
       /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
-
+      type: 0,
     },
+    methods: {
+      clickBind(e) {
+        console.log(this.$data.type);
+        // this.$data.type = this.$data.type + 1;
+        // if (this.$data.type >= 4) {
+        //   this.$data.type = 0;
+        // }
+
+        this.$data.type = (this.$data.type + 1) % 4;
+      },
+    }
   });
 
 </script>
