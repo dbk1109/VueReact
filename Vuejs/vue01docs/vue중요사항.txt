@@ -22,8 +22,8 @@ vue 단축키:
 
 실행중인 서버 중지 : ctrl + c
 
-함수 ==> methods  <== v-on , @
 변수 ==> data     <== v-?? , {{ }} , :
+함수 ==> methods  <== v-on , @
 
 메서드 매개변수 확인하는 방법:
   ctrl + shift + spacebar
