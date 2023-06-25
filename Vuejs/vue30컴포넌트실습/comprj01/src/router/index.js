@@ -28,6 +28,11 @@ const routes = [
     name: 'vue3403',
     component: () => import('../views/Vue3403View.vue'),
   },
+  {
+    path: '/vue34ex',
+    name: 'vue34ex',
+    component: () => import('../views/Vue34exView.vue'),
+  },
 ];
 
 const router = createRouter({
