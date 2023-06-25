@@ -54,8 +54,7 @@ li.checked {
         v-for="item in todoItems"
         v-bind:class="item.done ? 'checked' : null"
         v-bind:key="item.id"
-        v-bind:data-id="item.id"
-        v-on:click="doneToggle"
+        v-on:click="(e) => doneToggle(e, item.id)"
       >
         <i aria-hidden="true" class="checkBtn fas fa-check"></i>
         {{ item.todo }}
@@ -86,9 +85,8 @@ export default {
   //template: ``,
   methods: {
     /* 이벤트 핸들러 등록 + 일반 함수 */
-    doneToggle(e) {
-      console.log(e.target);
-      const id = e.target.dataset.id;
+    doneToggle(e, id) {
+      console.log(e.target, id);
       debugger;
       this.$emit('doneToggle', e, id);
     },
