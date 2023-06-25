@@ -246,7 +246,6 @@
 
 
         step 7-2-1. src/components/todo/TodoHeader.vue 에 style 과 template 추가
-            vue45ToDo/1차/TodoHeader.vue 내용을 복사하여 붙여넣기
 
         step 7-2-2. src/components/todo/TodoHeader.vue  에 추가
             < script>
@@ -280,7 +279,6 @@
         step 7-3. src/components/todo/TodoFooter.vue  만들기
 
         step 7-3-1. src/components/todo/TodoFooter.vue 에 style 과 template 추가
-            vue45ToDo/1차/TodoFooter.vue 내용을 복사하여 붙여넣기
 
         step 7-3-2. src/components/todo/TodoFooter.vue  에 추가
             < script>
@@ -391,12 +389,53 @@
 
         step 7-5. src/components/todo/TodoList.vue  만들기
         step 7-5-1. src/components/todo/TodoList.vue   에 style 과 template 추가
-            vue45ToDo/1차/TodoList.vue 내용을 복사하여 붙여넣기
 
+        step 7-5-2. src/views/TodoView.vue 에 todoItems 설정
 
-        step 7-5-2. v-for 기능 추가
+            < script>
 
-        step 7-5-3. src/components/todo/TodoList.vue   에 추가
+              export default {
+                ...
+                data() {
+                  return {
+                    todoItems: [
+                      { id: 1, todo: "영화보기", done: false },
+                      { id: 2, todo: "주말 산책", done: true },
+                      { id: 3, todo: "ES6 학습", done: false },
+                      { id: 4, todo: "잠실 야구장", done: false }
+                    ]
+                  };
+                },
+                ...
+              }
+            </script>
+
+        step 7-5-3. src/components/todo/TodoList.vue 의 템플릿 에 v-for 기능 추가
+        
+            <template>
+                <section>
+                    <transition-group name="list" tag="ul">
+                        <li
+                            v-for="todoItem in todoItems"
+                            v-bind:key="todoItem.id"
+                            v-bind:class="checked(todoItem.done)"
+                            v-on:click="doneToggle(todoItem.id)"
+                        >
+                            <i class="checkBtn fas fa-check" aria-hidden="true"></i>
+                            {{ todoItem.todo }}
+                            <span
+                                class="removeBtn"
+                                type="button"
+                                v-on:click="removeTodo(todoItem.id)"
+                            >
+                                <i class="far fa-trash-alt" aria-hidden="true"></i>
+                            </span>
+                        </li>
+                    </transition-group>
+                </section>
+            </template>
+
+        step 7-5-4. src/components/todo/TodoList.vue   에 추가
             < script>
               export default {
                 /* pdtmc^2w */
@@ -406,13 +445,13 @@
                     debugger;
                     console.log(done);
                   },
-                  doneToggle(e) {
+                  doneToggle(id) {
                     debugger;
                     console.log(id);
                     // 부모 컴포넌트에게 doneToggle 이벤트 발생시킨다.
                     this.$emit('removeTodo', e);
                   },
-                  removeTodo(e) {
+                  removeTodo(id) {
                     debugger;
                     console.log(id);
                     // 부모 컴포넌트에게 doneToggle 이벤트 발생시킨다.
@@ -422,7 +461,7 @@
               };
             </script>
 
-        step 7-5-4. src/views/TodoView.vue 에 컴포넌트 등록 및 template 에 props와 event 바인드를 설정
+        step 7-5-5. src/views/TodoView.vue 에 컴포넌트 등록 및 template 에 props와 event 바인드를 설정
             <template>
                 <div id="app">
                     <!-- TodoHeader -->

@@ -1,50 +1,4 @@
-<style scoped>
-ul {
-  list-style-type: none;
-  padding-left: 0px;
-  margin-top: 0;
-  text-align: left;
-}
-
-li {
-  display: flex;
-  min-height: 50px;
-  height: 50px;
-  line-height: 50px;
-  margin: 0.5rem 0;
-  padding: 0 0.9rem;
-  background: white;
-  border-radius: 5px;
-}
-
-li.checked {
-  background: #bbb;
-  color: #fff;
-  text-decoration: line-through;
-}
-
-.checkBtn {
-  line-height: 45px;
-  color: #62acde;
-  margin-right: 5px;
-}
-
-.removeBtn {
-  margin-left: auto;
-  color: #de4343;
-}
-
-.list-enter-active,
-.list-leave-active {
-  transition: all 1s;
-}
-
-.list-enter,
-.list-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
-}
-</style>
+<style scoped></style>
 
 <template>
   <div id="app">
@@ -52,42 +6,14 @@ li.checked {
     <TodoHeader></TodoHeader>
 
     <!-- TodoInput -->
-    <TodoInput></TodoInput>
+    <TodoInput v-on:addTodo="addTodo"></TodoInput>
 
     <!-- TodoList -->
-    <!-- "checked(todoItem.done)"  <==> "todoItem.done ? 'checked': null "  -->
-    <section>
-      <ul>
-        <li>
-          <i aria-hidden="true" class="checkBtn fas fa-check"></i>
-          영화보기
-          <span type="button" class="removeBtn">
-            <i aria-hidden="true" class="far fa-trash-alt"></i>
-          </span>
-        </li>
-        <li class="checked">
-          <i aria-hidden="true" class="checkBtn fas fa-check"></i>
-          주말 산책
-          <span type="button" class="removeBtn">
-            <i aria-hidden="true" class="far fa-trash-alt"></i>
-          </span>
-        </li>
-        <li>
-          <i aria-hidden="true" class="checkBtn fas fa-check"></i>
-          ES6 학습
-          <span type="button" class="removeBtn">
-            <i aria-hidden="true" class="far fa-trash-alt"></i>
-          </span>
-        </li>
-        <li>
-          <i aria-hidden="true" class="checkBtn fas fa-check"></i>
-          잠실 야구장
-          <span type="button" class="removeBtn">
-            <i aria-hidden="true" class="far fa-trash-alt"></i>
-          </span>
-        </li>
-      </ul>
-    </section>
+    <TodoList
+      v-bind:todoItems="todoItems"
+      v-on:doneToggle="doneToggle"
+      v-on:removeTodo="removeTodo"
+    ></TodoList>
 
     <!-- TodoFooter -->
     <TodoFooter v-on:clearAll="clearAll"></TodoFooter>
@@ -100,18 +26,38 @@ li.checked {
 import TodoHeader from '../components/todo/TodoHeader.vue';
 import TodoFooter from '../components/todo/TodoFooter.vue';
 import TodoInput from '../components/todo/TodoInput.vue';
+import TodoList from '../components/todo/TodoList.vue';
 
 export default {
   /* pdtmc^2w */
   props: [],
   data() {
     /* 컴포넌트 안에서 사용되는 변수 등록. 개별 변수 */
-    return {};
+    return {
+      todoItems: [
+        { id: 1, todo: '영화보기', done: false },
+        { id: 2, todo: '주말 산책', done: true },
+        { id: 3, todo: 'ES6 학습', done: false },
+        { id: 4, todo: '잠실 야구장', done: false },
+      ],
+    };
   },
   //template: ``,
   methods: {
     /* 이벤트 핸들러 등록 + 일반 함수 */
     clearAll(e) {
+      debugger;
+      console.log(e.target);
+    },
+    doneToggle(e, id) {
+      debugger;
+      console.log(id);
+    },
+    removeTodo(id) {
+      debugger;
+      console.log(id);
+    },
+    addTodo(e) {
       debugger;
       console.log(e.target);
     },
@@ -130,6 +76,7 @@ export default {
     TodoHeader: TodoHeader,
     TodoFooter: TodoFooter,
     TodoInput: TodoInput,
+    TodoList: TodoList,
   },
   computed: {
     /* 자동처리 + 동기식. 메서드로 작성. return 필수. data 와 공존 불가 */
