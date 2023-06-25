@@ -43,6 +43,11 @@ const routes = [
     name: 'vue3701',
     component: () => import('../views/Vue3701View.vue'),
   },
+  {
+    path: '/vue4301',
+    name: 'vue4301',
+    component: () => import('../views/Page4301View.vue'),
+  },
 ];
 
 const router = createRouter({
