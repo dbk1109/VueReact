@@ -38,6 +38,11 @@ const routes = [
     name: 'vue3501',
     component: () => import('../views/Vue3501View.vue'),
   },
+  {
+    path: '/vue3701',
+    name: 'vue3701',
+    component: () => import('../views/Vue3701View.vue'),
+  },
 ];
 
 const router = createRouter({

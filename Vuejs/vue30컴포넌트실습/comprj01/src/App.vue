@@ -6,7 +6,8 @@
     <router-link to="/vue3104">vue3104</router-link> |
     <router-link to="/vue3403">vue3403</router-link> |
     <router-link to="/vue34ex">vue34ex</router-link> |
-    <router-link to="/vue3501">vue3501</router-link>
+    <router-link to="/vue3501">vue3501</router-link> |
+    <router-link to="/vue3701">vue3701</router-link>
   </nav>
   <router-view />
 </template>
