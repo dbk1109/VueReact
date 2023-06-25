@@ -48,10 +48,19 @@ export default {
     clearAll(e) {
       debugger;
       console.log(e.target);
+      this.$data.todoItems = [];
     },
     doneToggle(e, id) {
       debugger;
       console.log(id);
+      // 복제 후 할당 처리 방식.
+      // 1. 새로운 배열 만들기. map 사용
+      // 2. this.$data.todoItems 에 새로운 배열 할당하기
+      const newarr = this.$data.todoItems.map((value, index, array) => {
+        if (value.id === id) value.done = !value.done;
+        return value;
+      });
+      this.$data.todoItems = newarr;
     },
     removeTodo(id) {
       debugger;
