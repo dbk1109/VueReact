@@ -29,25 +29,22 @@ export default {
   },
   //template: ``,
   methods: {
+    ...mapActions('counterStore', {
+      dispatchSetCounter: 'setCounter',
+    }),
+
     /* 이벤트 핸들러 등록 + 일반 함수 */
     handlerIncrement(e) {
       console.log(e.target);
-      this.$data.counter = this.$data.counter + 1;
+      debugger;
+      //this.$data.counter = this.$data.counter + 1;
+      this.dispatchSetCounter(+1);
     },
     handlerDecrement(e) {
       console.log(e.target);
-      this.$data.counter = this.$data.counter - 1;
+      //this.$data.counter = this.$data.counter - 1;
+      this.dispatchSetCounter(-1);
     },
-
-    /* vuex 를 사용하는 경우
-      mapActions 는 store의 actions 를 가져오는 헬퍼 메서드입니다.
-      namespaced: true를 설정한 경우 네임스페이스를 사용하기 때문에 store의 모듈 명을 적어주어야 합니다.
-      store 모듈에서 actions 를 가져오는 2가지 방식
-      1) store.모듈명.actions 이름 바꾸어 사용하기(추천방식)
-         ...mapActions('모듈명', { dispatch액션명1: '액션명1', dispatch액션명2: '액션명2' }),
-      2) store.모듈명.actions 이름 그대로 사용하기
-         ...mapActions('모듈명', ['액션명1', '액션명2']),
-      */
   },
   components: {
     /* 전역 컴포넌트인 경우는 등록하지 않는다. 전역 컴포넌트는 프로토타입 체인으로 찾을 수 있기 때문에 */

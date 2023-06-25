@@ -17,6 +17,14 @@ const store = {
       const { commit } = mutations;
       commit('get', payload);
     },
+    // set(mutations /* 고정 */, payload) {
+    //   //const { commit } = mutations;
+    //   mutations.commit('set', payload);
+    // },
+    setCounter({ commit } /* 고정 */, payload) {
+      debugger;
+      commit('setCounter', payload);
+    },
   },
   mutations: {
     /* 왜 mutations 를 사용하나? state 를 바꾸기 위해서
@@ -29,6 +37,13 @@ const store = {
     },
     get(state /* 고정 */, param /* mutations.commit 호출시 넘겨지는 값 */) {
       state.인자 = param;
+    },
+    setCounter(
+      state /* 고정 */,
+      param /* mutations.commit 호출시 넘겨지는 값 */,
+    ) {
+      debugger;
+      state.counter = state.counter + param;
     },
   },
   state: {
