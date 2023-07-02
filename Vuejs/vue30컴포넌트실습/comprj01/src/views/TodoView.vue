@@ -65,10 +65,44 @@ export default {
     removeTodo(id) {
       debugger;
       console.log(id);
+
+      // 복제 후 할당 처리 방식.
+      // 1. 새로운 배열 만들기. filter 사용
+      // 2. this.$data.todoItems 에 새로운 배열 할당하기
+      const newarr = this.$data.todoItems.filter((value) => {
+        if (value.id === id) return false;
+        return true;
+      });
+      this.$data.todoItems = newarr;
     },
-    addTodo(e) {
+    addTodo(e, newTodoItem) {
       debugger;
       console.log(e.target);
+
+      // todoItems.map()과 todoItems.reduce()를 사용하여 max id를 찾는 방법
+      const ids = this.$data.todoItems.map((value) => {
+        // value === { id, done, todo}
+        return value.id;
+      });
+
+      console.log(ids); // [1,2,3,4]
+      // ids 배열에서 최대값 찾기 ==> max(), reduce()
+      const maxid = ids.reduce((pvalue, cvalue) => {
+        debugger;
+        if (pvalue > cvalue) return pvalue;
+        else return cvalue;
+      }, 0);
+
+      // 추가될 객체
+      const newobj = {
+        id: maxid + 1,
+        todo: newTodoItem,
+        done: false,
+      };
+
+      // 배열에 추가 ==> push() 메서드 또는 spread 연산자
+      // this.$data.todoItems.push(newobj);
+      this.$data.todoItems = [...this.$data.todoItems, newobj];
     },
     /* vuex 를 사용하는 경우
       mapActions 는 store의 actions 를 가져오는 헬퍼 메서드입니다.
