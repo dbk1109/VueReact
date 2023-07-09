@@ -120,8 +120,7 @@
         */}
         <Child
           count={count}
-          callbackCount={callbackCount} >
-        </Child>
+          callbackCount={callbackCount} />
       </div>
     );
   }
@@ -136,7 +135,10 @@
       debugger;
 
       // Parent 컴포넌트의 count 변수를 바꾸시오 ==> 부모의 콜백 메서드 호출
-      callbackCount(+1);
+      if (e.shiftKey === true)
+        callbackCount(+10);
+      else
+        callbackCount(+1);
     };
 
     // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
