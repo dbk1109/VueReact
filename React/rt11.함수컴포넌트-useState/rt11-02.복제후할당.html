@@ -37,59 +37,71 @@
 
     <xmp>
 
-컴포넌트의 상태(변수) 값을 변경하려면 복제 후 재할당으로 처리해야 한다.
+      어떻게 컴포넌트의 상태의 값을 바꾸어야 하나?
+      컴포넌트의 상태(변수) 값을 변경하려면 복제 후 재할당으로 처리해야 한다.
 
-컴포넌트의 상태(변수) 값을 직접 바꾸면 화면 변수의 값은 바뀌지만 화면이 바뀌지 않는다.
-즉, state[0]=100; 과 같이 바꾸면 값은 바뀌지만 화면에 rendering 되지 않는 문제 발생.
-
-어떻게 컴포넌트의 상태의 값을 바꾸어야 하나? 반드시 복제 후 재할당으로 처리해야 한다.
-
-자바스크립트 타입
-    # value 타입에는 string, number, boolen, ...
-    # reference 타입에는 Object, Array, Function, ...
+      컴포넌트의 상태(변수) 값을 직접 바꾸면 화면 변수의 값은 바뀌지만 화면이 바뀌지 않는다.
+      즉, state[0]=100; 과 같이 바꾸면 값은 바뀌지만 화면에 rendering 되지 않는 문제 발생.
 
 
-const [arr, setArr] = useState([1, 2, 3, 4, 5]);
+      자바스크립트 타입
+          # value 타입에는 string, number, boolen, ...
+          # reference 타입에는 Object, Array, Function, ...
 
-0. 배열 요소 직접 변경시 현상 확인
-    console.log('변경 전:', arr);
-    arr[0] = 100;
-    console.log('변경 후:', arr);
 
-1. setter 메서드를 사용하는 방식.
-    set변수명([100, 2, 3, 4, 5]);
+      const [arr, setArr] = useState([1, 2, 3, 4, 5]);
 
-2. map() 메서드를 사용하여 복제한다.
-    arr.map((value,index,array)=>( index === findIndex ? 200: value));
+      0. 배열 요소 직접 변경시 현상 확인
+          console.log('변경 전:', arr);
+          arr[0] = 100;
+          console.log('변경 후:', arr);
 
-3. filter() 메서드를 사용하여 삭제한다.
-    "ap03-11.객체배열.html"를 참고하여 실습한다. 5분간
+      1. setter 메서드를 사용하는 방식.
+          set변수명([100, 2, 3, 4, 5]);
 
-4. spread 연산자 방식 ==> 배열을 새로 만든 뒤 할당. ES6 에서만 가능.
-    var arr_copy = [500, ...arr, 70]; // [500, 3, 4, 5, 70]
+      2. map() 메서드를 사용하여 복제한다.
+          arr.map((value,index,array)=>( index === findIndex ? 200: value));
 
-실행 순서와 결과 예시
-    (0) [1, 2, 3, 4, 5]
-    (1) [100, 2, 3, 4, 5]       <== 방법1을 적용
-    (2) [100, 300, 3, 4, 5]     <== 방법2을 적용
-    (3) [3, 4, 5]               <== 방법3을 적용
-    (4) [500, 3, 4, 5, 70]      <== 방법4을 적용
+      3. filter() 메서드를 사용하여 삭제한다.
+          "ap03-11.객체배열.html"를 참고하여 실습한다. 5분간
 
+      4. spread 연산자 방식 ==> 배열을 새로 만든 뒤 할당. ES6 에서만 가능.
+          var arr_copy = [500, ...arr, 70]; // [500, 3, 4, 5, 70]
+
+      실행 순서와 결과 예시
+        (0) [1, 2, 3, 4, 5]
+        (1) [100, 2, 3, 4, 5]       <== "방법0"을 사용하여 수정 ==> 값을 변경되지만 화면은 변경되지 않는다.
+        (2) [100, 2, 3, 4, 5]       <== "방법1"을 사용하여 수정하시오
+        (3) [100, 300, 3, 4, 5]     <== "방법2"을 사용하여 추가하시오
+        (4) [3, 4, 5]               <== "방법3"을 사용하여 삭제하시오
+        (5) [500, 3, 4, 5, 70]      <== "방법4"을 사용하여 새로운 배열을 만드시오.
+
+
+      "복제 후 할당" 실습하기
+        1. 컨테이너 폴더 만들기
+          $ mkdir -p ./src/containers
+
+        2. AssignmentAfterCloning 컴포넌트 파일 만들기
+          $ touch ./src/containers/AssignmentAfterCloning.js
+
+        3. AssignmentAfterCloning 컴포넌트의 뼈대를 만든다.
+          단축키: rfc
+
+        4. AssignmentAfterCloning 컴포넌트의 화면, JSX 만들기
+          <div id="app">
+            <div>
+              {arr.map( (value,index)=>(<span key={index}> {value} </span>))}
+              <br />
+              <button onClick={handlerChange0}>방법0로 변경</button>
+              <button onClick={handlerChange1}>방법1로 변경</button>
+              <button onClick={handlerChange2}>방법2로 변경</button>
+              <button onClick={handlerChange3}>방법3로 변경</button>
+              <button onClick={handlerChange4}>방법4로 변경</button>
+            </div>
+          </div>
     </xmp>
-    <hr />
-    <div id="app">
-      <div>
-        {arr.map( (value,index)=>(<span key={index}> {value} </span>))}
-        <br />
-        <button onClick={handlerChange1}>방법1로 변경</button>
-        <button onClick={handlerChange2}>방법2로 변경</button>
-        <button onClick={handlerChange3}>방법3로 변경</button>
-        <button onClick={handlerChange4}>방법4로 변경</button>
-      </div>
-    </div>
   </body>
 </html>
-
 
 <script src="https://unpkg.com/@babel/standalone/babel.js"
   crossorigin="anonymous">
@@ -103,24 +115,29 @@ const [arr, setArr] = useState([1, 2, 3, 4, 5]);
   crossorigin="anonymous">
     /* import ReactDOM from 'react-dom' */
   </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.8.1/prop-types.js"
-  crossorigin="anonymous">
-  </script>
 <script type="text/babel">
 
   const { useState, useEffect, useRef, useCallback, useMemo, useReducer, Fragment } = React;
 
   // id="app" 인 태그 에 아래에서 만든 컴포넌트를 화면에 붙이시오
   // ReactDOM.render( 인자1, 인자2 )
-  ReactDOM.render(<Repl />, document.getElementById('app'));
+  ReactDOM.render(<AssignmentAfterCloning />, document.getElementById('app'));
 
   // 단축키 rfchtml
   // const {...props} = props;
-  function Repl({ }) {
+  function AssignmentAfterCloning({ }) {
     // useState 를 사용한 컴포넌트의 상태값 설정
-    const [arr, setArr] = useState([1, 2, 3, 4, 5]); // 상태값이 기본타입인 경우
+    const [arr, setArr] = useState([1, 2, 3, 4, 5]); // 상태값이 배열타입인 경우
 
     // 이벤트 핸들러 작성.
+    const handlerChange0 = (e) => {
+      // 이벤트 핸들러는 화살표 함수로 만든다
+      console.log(e.target);
+      console.log(arr);
+      debugger;
+      arr[0] = 100;
+      console.log(arr); \
+    };
     const handlerChange1 = (e) => {
       // 이벤트 핸들러는 화살표 함수로 만든다
       console.log(e.target);
@@ -161,10 +178,11 @@ const [arr, setArr] = useState([1, 2, 3, 4, 5]);
     const handlerChange4 = (e) => {
       // 이벤트 핸들러는 화살표 함수로 만든다
       console.log(e.target);
+
       debugger;
-      // 복제 ==> 얕은 복사 방식이 사용됨.
+      // 1. 배열 복제 ==> 새로운 배열 만들기 ==> 얕은 복사 방식이 사용됨.
       const newArr = [500, ...arr, 70];
-      // 할당
+      // 2. 할당(대입)
       setArr(newArr);
     };
 
@@ -174,6 +192,7 @@ const [arr, setArr] = useState([1, 2, 3, 4, 5]);
         <div>
           {arr.map((value, index) => (<span key={index}> {value} </span>))}
           <br />
+          <button onClick={handlerChange0}>방법0로 변경</button>
           <button onClick={handlerChange1}>방법1로 변경</button>
           <button onClick={handlerChange2}>방법2로 변경</button>
           <button onClick={handlerChange3}>방법3로 변경</button>
