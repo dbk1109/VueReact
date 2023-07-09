@@ -29,11 +29,65 @@
       Greeting 컴포넌트의 인자로 isLoggedIn 을 넘긴다.
       isLoggedIn 값으로는 true 를 넘기도록 설정하시오.
 
-      작업 순서.
-      1. UserGreeting 컴포넌트 만들기
-      2. GuestGreeting 컴포넌트 만들기
-      3. Greeting 컴포넌트 만들기
-      4. 화면에 Greeting 컴포넌트 붙이기
+
+      ##################################
+      작업 1. html 화면을 컴포넌트 단위로 쪼개기
+      소요시간: 25분
+      GreetingContainer
+      Greeting
+      UserGreeting
+      GuestGreeting
+
+
+      ##################################
+      1. greeting1 관련 폴더 및 파일 만들기
+
+      $ pwd # 현재 작업 폴더의 위치를 확인한다.
+      $ ls # package.json 파일이 있는지 확인한다.
+
+      # greeting1 컴포넌트 폴더 만들기
+      $ mkdir -p src/containers/greeting1
+      $ mkdir -p src/containers/greeting1/components
+
+      # greeting1 컴포넌트 관련 파일 만들기
+      $ touch src/containers/greeting1/GreetingContainer.js
+      $ touch src/containers/greeting1/components/Greeting.js
+      $ touch src/containers/greeting1/components/UserGreeting.js
+      $ touch src/containers/greeting1/components/GuestGreeting.js
+
+      ##################################
+      2. 화면에 GreetingContainer 컴포넌트 붙이기
+      src/App.js 수정한다.
+      import './App.css';
+      import GreetingContainer from './containers/greeting1/GreetingContainer';
+
+      function App(){
+        return(
+          <div>
+            <GreetingContainer></GreetingContainer>
+          </div>
+        );
+      }
+
+      ##################################
+      3. GreetingContainer 컴포넌트 만들기
+      $ mkdir -p src/containers/greeting1
+      $ touch src/containers/greeting1/GreetingContainer.js
+
+      ##################################
+      4. Greeting 컴포넌트 만들기
+      $ mkdir -p src/containers/greeting1/components
+      $ touch src/containers/greeting1/components/Greeting.js
+
+      ##################################
+      5. UserGreeting 컴포넌트 만들기
+      $ mkdir -p src/containers/greeting1/components
+      $ touch src/containers/greeting1/components/UserGreeting.js
+
+      ##################################
+      6. GuestGreeting 컴포넌트 만들기
+      $ mkdir -p src/containers/greeting1/components
+      $ touch src/containers/greeting1/components/GuestGreeting.js
     </xmp>
     <hr />
 
