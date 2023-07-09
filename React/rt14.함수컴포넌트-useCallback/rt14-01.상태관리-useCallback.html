@@ -126,11 +126,12 @@
     const callbackChildMessage = useCallback((param) => {
       debugger;
       console.log(param);
+      setParentText(param);
       setChildMessage(param);
       // state 변경
     }, [
       /* 연관배열: 콜백 메서드에서 변경하고자 하는 연관되는 상태(변수)명들을 기술  */
-      childMessage
+      childMessage, parentText
     ]);
 
     // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
