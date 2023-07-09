@@ -169,7 +169,7 @@
 
     step 1-27. immer 설치(필수)
         immer : 리덕스 store state 를 불변 객체(읽기 전용)로 처리할 때 사용되는 라이브러리
-        ===> 복제 후 할당을 처리하는 라이브러리
+        ===> 리덕스에서 복제 후 할당을 처리하는 라이브러리
 
         Create the next immutable state tree by simply modifying the current tree
         https://www.npmjs.com/package/immer
@@ -183,6 +183,7 @@
     step 1-31. install material-ui
         안드로이드에서 사용하는 UI 기능과 디자인을 제공하는 라이브러리
         홈페이지 : https://material-ui.com/
+        18 버전에서 버전 충돌 발생.
 
         $ npm install --save  @material-ui/core  @material-ui/icons  @material-ui/pickers  @material-ui/styles
 
@@ -195,6 +196,7 @@
 
 
     step 1-33. install Ant Design
+        피그마의 원리가 사용된다.원자, 분자, 유기체
         홈페이지 : https://ant.design/docs/react/getting-started
 
         $ npm install --save antd
@@ -242,7 +244,7 @@
 
     ##################################
     4. 프로젝트 환경 설정
-       소요시간: 15분
+       소요시간: 25분
     ##################################
 
     프로젝트
@@ -351,7 +353,8 @@
             . git 커밋할 때
         정의된 규칙에 따라 코드의 형식을 자동으로 수정한다.
 
-        prettier : Prettier 모듈
+        prettier :
+        prettier 모듈
         eslint-config-react: react 프로젝트에 맞춰진 ESLint 규칙을 추가합니다.
         eslint-plugin-prettier: 코드 코맷할 때 Prettier를 사용하게 만드는 규칙을 추가합니다.
         eslint-config-prettier: Prettier와 충돌할 설정들을 비활성화합니다.
@@ -390,7 +393,7 @@
 
 
     4-4. eslint 모듈
-        ESlint는 문법 오류를 잡아내기 위해 사용되는 모듈 입니다.
+        ESlint는 코드의 문법 오류를 잡아내기 위해 사용되는 모듈 입니다.
         오류 수정은 Prettier 로 한다.
 
         airbnb ESLint 규칙을 사용하려면 아래 5개의 패키지들은 필수로 설치해야 합니다.
@@ -595,7 +598,7 @@
           },
           "lint-staged": {
               "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-                  "prettier --write",
+                  "prettier --write" /* ESLint 룰에 맞게 코드 수정 */,
                   "git add"
               ]
           }

@@ -92,25 +92,13 @@
         // 언마운트 직전에 한번만 실행됨.
         console.log('Greeting >> componentWillUmount');
       };
-    }, [/* 연관배열: 메서드와 연관되는 상태(변수)명들을 기술 */
-      isLoggedIn
-    ]);
+    }, [/* 연관배열: 메서드와 연관되는 상태(변수)명들을 기술 */]);
 
-
-    // 이벤트 핸들러 작성.
-    const handler = (e) => {
-      // 이벤트 핸들러는 화살표 함수로 만든다
-      console.log(e.target);
-
-      // isLoggedIn 값을 변경한다.
-      setIsLoggedIn(!isLoggedIn);
-    };
 
     // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
     return (
       <div>
         Greeting
-        <button onClick={handler}>button</button>
         {isLoggedIn && <UserGreeting></UserGreeting>}
         {!isLoggedIn && <GuestGreeting></GuestGreeting>}
       </div>
@@ -119,6 +107,25 @@
 
   // const {...props} = props;
   function UserGreeting({ ...props }) {
+    // refIsMounted는 생명주기의 마운트와 업데이트를 구분하기 위한 ref
+    const refIsMounted = useRef(false);
+    useEffect(() => {
+      if (refIsMounted.current) {
+        // 업데이트 될 때마다 실행됨. 여러번. state 가 변경될 때마다
+        console.log('UserGreeting >> componentDidUpdate');
+      }
+      else {
+        // 마운트 완료 후에 실행됨. 한번만. focus 줄때
+        console.log('UserGreeting >> componentDidMount');
+        refIsMounted.current = true;
+      }
+      return () => {
+        // 언마운트 직전에 한번만 실행됨.
+        console.log('UserGreeting >> componentWillUmount');
+      };
+    }, [/* 연관배열: 메서드와 연관되는 상태(변수)명들을 기술 */]);
+
+
     // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
     return (
       <div>
@@ -129,6 +136,24 @@
 
   // const {...props} = props;
   function GuestGreeting({ ...props }) {
+    // refIsMounted는 생명주기의 마운트와 업데이트를 구분하기 위한 ref
+    const refIsMounted = useRef(false);
+    useEffect(() => {
+      if (refIsMounted.current) {
+        // 업데이트 될 때마다 실행됨. 여러번. state 가 변경될 때마다
+        console.log('GuestGreeting >> componentDidUpdate');
+      }
+      else {
+        // 마운트 완료 후에 실행됨. 한번만. focus 줄때
+        console.log('GuestGreeting >> componentDidMount');
+        refIsMounted.current = true;
+      }
+      return () => {
+        // 언마운트 직전에 한번만 실행됨.
+        console.log('GuestGreeting >> componentWillUmount');
+      };
+    }, [/* 연관배열: 메서드와 연관되는 상태(변수)명들을 기술 */]);
+    
     // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
     return (
       <div>
