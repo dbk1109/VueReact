@@ -360,7 +360,7 @@
         eslint-config-prettier: Prettier와 충돌할 설정들을 비활성화합니다.
 
         # prettier 모듈 설치
-        $ npm install --save-dev prettier \
+        $ npm install --save-dev prettier@2.8.8 \
                                  eslint-config-react \
                                  eslint-plugin-prettier \
                                  eslint-config-prettier
@@ -644,23 +644,21 @@
     |   |   |   |-- api.js       (외부 API 호출)
     |   |   |   |-- saga.js      (외부 API 호출 saga)
     |   |   |   |-- reducer.js   (리덕스 리듀서)
-    |   |   |   |-- 컨테이너컴포넌트1.js     (컴포넌트 UI )
-    |   |        `-- 컨테이너컴포넌트1.css   (컨테이너컴포넌트1 에서만 사용되는 css 파일)
+    |   |   |   `-- 컨테이너컴포넌트1.js     (컴포넌트 UI )
     |   |   `-- 컨테이너컴포넌트2
     |   |        |-- components   (컨테이너컴포넌트2 에서만 사용되는 프리젠테이션 컴포넌트 폴더)
     |   |        |-- action.js    (액션상수,액션함수 정의)
     |   |        |-- api.js       (외부 API 호출)
     |   |        |-- saga.js      (외부 API 호출 saga)
     |   |        |-- reducer.js   (리덕스 리듀서)
-    |   |        |-- 컨테이너컴포넌트2.js    (컴포넌트 UI )
-    |   |        `-- 컨테이너컴포넌트2.css   (컨테이너컴포넌트2 에서만 사용되는 css 파일)
+    |   |        `-- 컨테이너컴포넌트2.js    (컴포넌트 UI ))
     |   |-- constant (상수)
     |   |-- models (데이터 모델 변수, 타입)
-    |   |-- pages (페이지 컴포넌트)
+    |   |-- pages (페이지 컴포넌트==> 라우팅 처리)
     |   |   `-- index.js
     |   |-- reducers (리듀서)
     |   |   `-- index.js
-    |   |-- store (라우팅)
+    |   |-- store (redux store)
     |   |   `-- index.js
     |   |-- utils (유틸리티 모듈)
     |   |-- App.css
