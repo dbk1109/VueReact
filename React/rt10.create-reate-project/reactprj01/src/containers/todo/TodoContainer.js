@@ -23,6 +23,7 @@ import {
 } from 'react-router-dom';
 
 import TodoHeader from './components/TodoHeader';
+import TodoFooter from './components/TodoFooter';
 
 const StyledTodoContainer = styled.div`
   /* &로 자기 자신을 나타내고 삼항연산자, &&,|| 문을 쓸수 있다
@@ -191,20 +192,6 @@ const StyledTodoContainer = styled.div`
     opacity: 0;
     transform: translateY(30px);
   }
-
-  .clearAllContainer {
-    width: 16rem;
-    height: 50px;
-    line-height: 50px;
-    background-color: white;
-    border-radius: 5px;
-    margin: 0 auto;
-  }
-
-  .clearAllBtn {
-    color: #e20303;
-    display: block;
-  }
 `;
 
 // const {...props} = props;
@@ -246,12 +233,16 @@ function TodoContainer({ ...props }) {
   );
 
   // callback 메서드 작성. callback 메서드는 부모의 공유 상태값을 변경하기 위해서 사용된다.
-  const callback = useCallback(
+  const callbackClearAll = useCallback(
     (param) => {
       // state 변경
+      // setTodoItems 는  todoItems 상태를 바꾸기 위한 setter 메서드
+      debugger;
+      setTodoItems([]); // todoItems = [];
     },
     [
       /* 연관배열: 콜백 메서드에서 변경하고자 하는 연관되는 상태(변수)명들을 기술 */
+      todoItems,
     ],
   );
 
@@ -330,9 +321,7 @@ function TodoContainer({ ...props }) {
       </section>
 
       {/* <!-- TodoFooter --> */}
-      <div className="clearAllContainer">
-        <span className="clearAllBtn">Clear All</span>
-      </div>
+      <TodoFooter callbackClearAll={callbackClearAll}></TodoFooter>
     </StyledTodoContainer>
   );
 }
