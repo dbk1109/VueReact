@@ -24,6 +24,7 @@ import {
 
 import TodoHeader from './components/TodoHeader';
 import TodoFooter from './components/TodoFooter';
+import TodoList from './components/TodoList';
 
 const StyledTodoContainer = styled.div`
   /* &로 자기 자신을 나타내고 삼항연산자, &&,|| 문을 쓸수 있다
@@ -146,52 +147,6 @@ const StyledTodoContainer = styled.div`
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
-
-  ul {
-    list-style-type: none;
-    padding-left: 0px;
-    margin-top: 0;
-    text-align: left;
-  }
-
-  li {
-    display: flex;
-    min-height: 50px;
-    height: 50px;
-    line-height: 50px;
-    margin: 0.5rem 0;
-    padding: 0 0.9rem;
-    background: white;
-    border-radius: 5px;
-  }
-
-  li.checked {
-    background: #bbb;
-    color: #fff;
-    text-decoration: line-through;
-  }
-
-  .checkBtn {
-    line-height: 45px;
-    color: #62acde;
-    margin-right: 5px;
-  }
-
-  .removeBtn {
-    margin-left: auto;
-    color: #de4343;
-  }
-
-  .list-enter-active,
-  .list-leave-active {
-    transition: all 1s;
-  }
-
-  .list-enter,
-  .list-leave-to {
-    opacity: 0;
-    transform: translateY(30px);
-  }
 `;
 
 // const {...props} = props;
@@ -287,38 +242,7 @@ function TodoContainer({ ...props }) {
       </div>
 
       {/* <!-- TodoList --> */}
-      <section>
-        <ul>
-          <li>
-            <i aria-hidden="true" className="checkBtn fas fa-check"></i>
-            영화보기
-            <span type="button" className="removeBtn">
-              <i aria-hidden="true" className="far fa-trash-alt"></i>
-            </span>
-          </li>
-          <li className="checked">
-            <i aria-hidden="true" className="checkBtn fas fa-check"></i>
-            주말 산책
-            <span type="button" className="removeBtn">
-              <i aria-hidden="true" className="far fa-trash-alt"></i>
-            </span>
-          </li>
-          <li>
-            <i aria-hidden="true" className="checkBtn fas fa-check"></i>
-            ES6 학습
-            <span type="button" className="removeBtn">
-              <i aria-hidden="true" className="far fa-trash-alt"></i>
-            </span>
-          </li>
-          <li>
-            <i aria-hidden="true" className="checkBtn fas fa-check"></i>
-            잠실 야구장
-            <span type="button" className="removeBtn">
-              <i aria-hidden="true" className="far fa-trash-alt"></i>
-            </span>
-          </li>
-        </ul>
-      </section>
+      <TodoList></TodoList>
 
       {/* <!-- TodoFooter --> */}
       <TodoFooter callbackClearAll={callbackClearAll}></TodoFooter>
