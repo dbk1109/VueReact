@@ -76,7 +76,7 @@ const StyledTodoList = styled.section`
 `;
 
 // const {...props} = props;
-function TodoList({ todoItems, callbackDoneToggle }) {
+function TodoList({ todoItems, callbackDoneToggle, callbackRemoveTodo }) {
   // 이벤트 핸들러 작성.
   const handlerDoneToggle = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
@@ -88,6 +88,14 @@ function TodoList({ todoItems, callbackDoneToggle }) {
 
     // 부모 컴포넌트의 콜백 메서드 callbackDoneToggle 호출
     callbackDoneToggle(id);
+  };
+
+  const handlerRemoveTodo = (e, id) => {
+    // 이벤트 핸들러는 화살표 함수로 만든다
+    console.log(e.target);
+
+    // 부모 컴포넌트의 콜백 메서드 callbackRemoveTodo 호출
+    callbackRemoveTodo(id);
   };
 
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
@@ -105,7 +113,16 @@ function TodoList({ todoItems, callbackDoneToggle }) {
         >
           <i aria-hidden="true" className="checkBtn fas fa-check"></i>
           {item.todo}
-          <span type="button" className="removeBtn">
+          <span
+            type="button"
+            className="removeBtn"
+            onClick={(e) => {
+              e.stopPropagation(); // 이벤트 취소. 버블링 방지
+
+              // handlerRemoveTodo 호출
+              handlerRemoveTodo(e, item.id);
+            }}
+          >
             <i aria-hidden="true" className="far fa-trash-alt"></i>
           </span>
         </li>
@@ -122,11 +139,13 @@ function TodoList({ todoItems, callbackDoneToggle }) {
 TodoList.propTypes = {
   // props의 프로퍼티 타입 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
   callbackDoneToggle: PropTypes.func.isRequired,
+  callbackRemoveTodo: PropTypes.func.isRequired,
   todoItems: PropTypes.arrayOf(PropTypes.object),
 };
 TodoList.defaultProps = {
   // props의 디폴트 값 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
   callbackDoneToggle: () => {},
+  callbackRemoveTodo: () => {},
   todoItems: [],
 };
 

@@ -201,7 +201,6 @@ function TodoContainer({ ...props }) {
     ],
   );
 
-  // callback 메서드 작성. callback 메서드는 부모의 공유 상태값을 변경하기 위해서 사용된다.
   const callbackDoneToggle = useCallback(
     (id) => {
       // state 변경
@@ -214,6 +213,27 @@ function TodoContainer({ ...props }) {
             item.done = !item.done;
           }
           return item;
+        });
+
+      setTodoItems(newTodos); // todoItems = newTodos;
+    },
+    [
+      /* 연관배열: 콜백 메서드에서 변경하고자 하는 연관되는 상태(변수)명들을 기술 */
+      todoItems,
+    ],
+  );
+  const callbackRemoveTodo = useCallback(
+    (id) => {
+      // state 변경
+      // setTodoItems 는  todoItems 상태를 바꾸기 위한 setter 메서드
+      debugger;
+      const newTodos =
+        todoItems &&
+        todoItems.filter((item) => {
+          if (item.id === id) {
+            return false;
+          }
+          return true;
         });
 
       setTodoItems(newTodos); // todoItems = newTodos;
@@ -268,6 +288,7 @@ function TodoContainer({ ...props }) {
       <TodoList
         todoItems={todoItems}
         callbackDoneToggle={callbackDoneToggle}
+        callbackRemoveTodo={callbackRemoveTodo}
       ></TodoList>
 
       {/* <!-- TodoFooter --> */}
