@@ -86,33 +86,60 @@ function CrudContainer({ ...props }) {
   // items 배열에서 삭제하는 콜백 메서드 만들기. Array.filter() 를 사용한다
   const callbackDel = useCallback(
     (item) => {
-      // ...생략
-      debugger;
+      // 복제후 할당
+      const newItems =
+        items &&
+        items.length &&
+        items.filter((obj) => {
+          if (obj.id === item.id) return false;
+          else return true;
+        });
+      // 할당
+      setItems(newItems);
     },
     [
       /* 메서드와 연관되는 상태(변수)명들을 기술 */
+      items,
     ],
   );
 
   // power를 100씩 증가 시키는 콜백 메서드 만들기. Array.map() 을 사용한다
   const callbackUp = useCallback(
-    (item) => {
-      // ...생략
-      debugger;
+    (id) => {
+      // 복제후 할당
+      const newItems =
+        items &&
+        items.length &&
+        items.map((obj) => {
+          if (obj.id === id) obj.power = obj.power + 100;
+          return obj;
+        });
+      // 할당
+      setItems(newItems);
     },
     [
       /* 메서드와 연관되는 상태(변수)명들을 기술 */
+      items,
     ],
   );
 
   // power를 50씩 감소 시키는 콜백 메서드 만들기. Array.map() 을 사용한다
   const callbackDown = useCallback(
-    (item) => {
-      // ...생략
-      debugger;
+    (id) => {
+      // 복제후 할당
+      const newItems =
+        items &&
+        items.length &&
+        items.map((obj) => {
+          if (obj.id === id) obj.power = obj.power - 50;
+          return obj;
+        });
+      // 할당
+      setItems(newItems);
     },
     [
       /* 메서드와 연관되는 상태(변수)명들을 기술 */
+      items,
     ],
   );
 
