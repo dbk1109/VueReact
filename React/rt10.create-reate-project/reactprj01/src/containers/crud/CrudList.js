@@ -31,7 +31,13 @@ const StyledCrudList = styled.table`
 `;
 
 // const {...props} = props;
-function CrudList({ items }) {
+function CrudList({
+  items,
+  callbackDel,
+  callbackUp,
+  callbackDown,
+  callbackSave,
+}) {
   // useState 를 사용한 컴포넌트의 상태값 설정
   const [변수명, set변수명] = useState('기본값'); // 상태값이 기본타입인 경우
   const [state, setState] = useState({ id: 0, name: '', age: 0 }); // 상태값이 참조타입 경우
@@ -89,7 +95,18 @@ function CrudList({ items }) {
     items &&
     items.length &&
     items.map((item, index) => {
-      return <CrudListItem key={item.id} item={item}></CrudListItem>;
+      return (
+        <CrudListItem
+          key={item.id}
+          item={item}
+
+          callbackDel={callbackDel}
+          callbackUp={callbackUp}
+          callbackDown={callbackDown}
+          callbackSave={callbackSave}
+
+        ></CrudListItem>
+      );
     });
   console.log(arr);
   return (
@@ -112,12 +129,20 @@ CrudList.propTypes = {
   // 인자명: PropTypes.func.isRequired,
   // 인자명: PropTypes.arrayOf(PropTypes.object),
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  callbackDel: PropTypes.func.isRequired,
+  callbackUp: PropTypes.func.isRequired,
+  callbackDown: PropTypes.func.isRequired,
+  callbackSave: PropTypes.func.isRequired,
 };
 CrudList.defaultProps = {
   // props의 디폴트 값 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
   // 인자명: () => {},
   // 인자명: [],
   items: [],
+  callbackDel: () => {},
+  callbackUp: () => {},
+  callbackDown: () => {},
+  callbackSave: () => {},
 };
 
 export default CrudList; // React.memo(CrudList); // React.memo()는 props 미변경시 컴포넌트 리렌더링 방지 설정

@@ -30,7 +30,13 @@ const StyledCrudListItem = styled.tr`
 `;
 
 // const {...props} = props;
-function CrudListItem({ item }) {
+function CrudListItem({
+  item,
+  callbackDel,
+  callbackUp,
+  callbackDown,
+  callbackSave,
+}) {
   // useState 를 사용한 컴포넌트의 상태값 설정
   const [변수명, set변수명] = useState('기본값'); // 상태값이 기본타입인 경우
   const [state, setState] = useState({ id: 0, name: '', age: 0 }); // 상태값이 참조타입 경우
@@ -66,31 +72,33 @@ function CrudListItem({ item }) {
     ],
   );
 
-  // callback 메서드 작성. callback 메서드는 부모의 공유 상태값을 변경하기 위해서 사용된다.
-  const callback = useCallback(
-    (param) => {
-      // state 변경
-    },
-    [
-      /* 연관배열: 콜백 메서드에서 변경하고자 하는 연관되는 상태(변수)명들을 기술 */
-    ],
-  );
-
   // 이벤트 핸들러 작성.
   const handlerDel = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
     debugger;
+
+    // 부모의 콜백 메서드 호출.
+    // CrudContainer.callbackDel();
+    callbackDel();
   };
   const handlerUp = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
     debugger;
+
+    // 부모의 콜백 메서드 호출.
+    // CrudContainer.callbackUp();
+    callbackUp();
   };
   const handlerDown = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
     debugger;
+
+    // 부모의 콜백 메서드 호출.
+    // CrudContainer.callbackDown();
+    callbackDown();
   };
   const handlerEdit = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
@@ -130,12 +138,20 @@ CrudListItem.propTypes = {
   // 인자명: PropTypes.func.isRequired,
   // 인자명: PropTypes.arrayOf(PropTypes.object),
   item: PropTypes.object.isRequired,
+  callbackDel: PropTypes.func.isRequired,
+  callbackUp: PropTypes.func.isRequired,
+  callbackDown: PropTypes.func.isRequired,
+  callbackSave: PropTypes.func.isRequired,
 };
 CrudListItem.defaultProps = {
   // props의 디폴트 값 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
   // 인자명: () => {},
   // 인자명: [],
   item: {},
+  callbackDel: () => {},
+  callbackUp: () => {},
+  callbackDown: () => {},
+  callbackSave: () => {},
 };
 
 export default CrudListItem; // React.memo(CrudListItem); // React.memo()는 props 미변경시 컴포넌트 리렌더링 방지 설정

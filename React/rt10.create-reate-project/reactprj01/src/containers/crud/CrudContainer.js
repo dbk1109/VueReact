@@ -82,12 +82,58 @@ function CrudContainer({ ...props }) {
   );
 
   // callback 메서드 작성. callback 메서드는 부모의 공유 상태값을 변경하기 위해서 사용된다.
-  const callback = useCallback(
-    (param) => {
-      // state 변경
+
+  // items 배열에서 삭제하는 콜백 메서드 만들기. Array.filter() 를 사용한다
+  const callbackDel = useCallback(
+    (item) => {
+      // ...생략
+      debugger;
     },
     [
-      /* 연관배열: 콜백 메서드에서 변경하고자 하는 연관되는 상태(변수)명들을 기술 */
+      /* 메서드와 연관되는 상태(변수)명들을 기술 */
+    ],
+  );
+
+  // power를 100씩 증가 시키는 콜백 메서드 만들기. Array.map() 을 사용한다
+  const callbackUp = useCallback(
+    (item) => {
+      // ...생략
+      debugger;
+    },
+    [
+      /* 메서드와 연관되는 상태(변수)명들을 기술 */
+    ],
+  );
+
+  // power를 50씩 감소 시키는 콜백 메서드 만들기. Array.map() 을 사용한다
+  const callbackDown = useCallback(
+    (item) => {
+      // ...생략
+      debugger;
+    },
+    [
+      /* 메서드와 연관되는 상태(변수)명들을 기술 */
+    ],
+  );
+
+  // 새로운 값으로 수정하는 콜백 메서드 만들기. Array.map() 을 사용한다
+  const callbackSave = useCallback(
+    (newitem) => {
+      // ...생략
+    },
+    [
+      /* 메서드와 연관되는 상태(변수)명들을 기술 */
+    ],
+  );
+
+  // 새로운 값을 추가하는 콜백 메서드 만들기.
+  // Array에서  Array.map()과 Array.reduce()를 사용하여 max id 구하기
+  const callbackAdd = useCallback(
+    (newitem) => {
+      // ...생략
+    },
+    [
+      /* 메서드와 연관되는 상태(변수)명들을 기술 */
     ],
   );
 
@@ -103,7 +149,13 @@ function CrudContainer({ ...props }) {
       <h1>Creat Read Update Delete</h1>
       <CrudInput></CrudInput>
       <hr />
-      <CrudList items={items}></CrudList>
+      <CrudList
+        items={items}
+        callbackDel={callbackDel}
+        callbackUp={callbackUp}
+        callbackDown={callbackDown}
+        callbackSave={callbackSave}
+      ></CrudList>
     </StyledCrudContainer>
   );
 }
