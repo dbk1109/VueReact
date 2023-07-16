@@ -219,7 +219,11 @@ function TodoInput({ callbackAddTodo }) {
           onKeyUp={(e) => e.keyCode === 13 && handlerAddTodo(e)}
         />
         <span className="addContainer">
-          <i aria-hidden="true" className="addBtn fas fa-plus"></i>
+          <i
+            aria-hidden="true"
+            className="addBtn fas fa-plus"
+            onClick={handlerAddTodo}
+          ></i>
         </span>
 
         {isShowModal && (

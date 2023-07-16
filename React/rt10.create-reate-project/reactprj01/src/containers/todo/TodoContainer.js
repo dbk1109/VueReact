@@ -145,6 +145,25 @@ function TodoContainer({ ...props }) {
       // map과 reduce 를 사용하여 max id 구하기 ==> newid 만들기
       // todoItems 추가할 객체 만들기
       // 배열에 추가. todoItems = [...todoItems, newTodo];
+      const maxid =
+        todoItems &&
+        todoItems
+          .map((item) => item.id) // [1,2,3,4]
+          .reduce((pvalue, cvalue) => {
+            // 큰값 반환하기
+            if (pvalue > cvalue) return pvalue;
+            else return cvalue;
+          }, 0); // 최대값 찾기
+
+      const newTodo = {
+        id: maxid + 1,
+        todo: value,
+        done: false,
+      };
+
+      // todoItems.push(newItem);
+      // todoItems = [...todoItems, newTodo];
+      setTodoItems([...todoItems, newTodo]); // todoItems = [...todoItems, newTodo];
     },
     [
       /* 연관배열: 콜백 메서드에서 변경하고자 하는 연관되는 상태(변수)명들을 기술 */
