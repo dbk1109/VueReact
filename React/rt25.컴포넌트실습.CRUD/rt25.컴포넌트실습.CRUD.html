@@ -803,6 +803,8 @@
                 const handlerEdit = (event)=>{
                     // 이벤트 핸들러는 화살표 함수로 만든다
                     console.log(event.target);
+                    
+                    // formView  를 formEdit 로 바꾸기. isEditMode = !isEditMode;
                     setIsEditMode( !isEditMode );
                 };
                 ...중략
@@ -815,7 +817,7 @@
             //                      아니면 formView 리턴한다.
 
             const handlerSave = (event)=>{
-                // formEdit 를 formView로 바꾸기. isEditMode = !isEditMode;
+                // formEdit 를 formView 로 바꾸기. isEditMode = !isEditMode;
                 setIsEditMode( !isEditMode );
             };
 

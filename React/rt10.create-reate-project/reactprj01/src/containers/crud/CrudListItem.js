@@ -38,7 +38,7 @@ function CrudListItem({
   callbackSave,
 }) {
   // useState 를 사용한 컴포넌트의 상태값 설정
-  const [isEditMode, setIsEditMode] = useState(true); // 상태값이 기본타입인 경우
+  const [isEditMode, setIsEditMode] = useState(false); // 상태값이 기본타입인 경우
 
   // ref 만들기.
   const refInputName = useRef();
@@ -98,6 +98,59 @@ function CrudListItem({
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
     debugger;
+    // formView  를 formEdit 로 바꾸기. isEditMode = !isEditMode;
+    setIsEditMode(!isEditMode);
+  };
+  const handlerSave = (e) => {
+    // 이벤트 핸들러는 화살표 함수로 만든다
+    console.log(e.target);
+    debugger;
+    // formEdit 를 formView 로 바꾸기. isEditMode = !isEditMode;
+    setIsEditMode(!isEditMode);
+
+    // 유효성 검사. CrudInput 참조하여 코드를 완성하시오
+
+    // 유효성 검사 + 부모 콜백 메서드 호출
+
+    // Name 입력 여부 유효성 검사
+    const name = refInputName.current.value;
+    if (!name || !name.trim()) {
+      alert('이름을 입력하세요');
+
+      //     포커스 주기
+      refInputName.current.focus();
+
+      //     이벤트 취소
+      e.stopPropagation();
+      e.preventDefault();
+
+      return;
+    }
+
+    // Power 입력 여부 유효성 검사
+    const power = refInputPower.current.value;
+    // !power <===> power !== null ||  power !== undefined ||  power !== 0
+    if (power === null || power == undefined || power < 0 || !power.trim()) {
+      alert('파워을 입력하세요');
+
+      //     포커스 주기
+      refInputPower.current.focus();
+
+      //     이벤트 취소
+      e.stopPropagation();
+      e.preventDefault();
+
+      return;
+    }
+
+    // power 값을 숫자로 바꾸시오.(문자열를 숫자로)
+    const newItem = {
+      name: name,
+      power: Number(power),
+    };
+
+    // 부모 콜백 메서드 호출. CrudContainer.callbackSave();
+    callbackAdd(newItem);
   };
 
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
@@ -148,17 +201,14 @@ function CrudListItem({
         />
       </td>
       <td>
-        <button type="button" onClick={handlerDel}>
-          Del
-        </button>
         <button type="button" onClick={handlerUp}>
           Power Up
         </button>
         <button type="button" onClick={handlerDown}>
           Power Down
         </button>
-        <button type="button" onClick={handlerEdit}>
-          Edit
+        <button type="button" onClick={handlerSave}>
+          Save
         </button>
       </td>
     </StyledCrudListItem>

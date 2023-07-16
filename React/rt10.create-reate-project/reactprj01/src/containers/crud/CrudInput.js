@@ -67,16 +67,6 @@ function CrudInput({ callbackAdd }) {
     ],
   );
 
-  // callback 메서드 작성. callback 메서드는 부모의 공유 상태값을 변경하기 위해서 사용된다.
-  const callback = useCallback(
-    (param) => {
-      // state 변경
-    },
-    [
-      /* 연관배열: 콜백 메서드에서 변경하고자 하는 연관되는 상태(변수)명들을 기술 */
-    ],
-  );
-
   // 이벤트 핸들러 작성.
   const handlerAdd = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
@@ -115,6 +105,19 @@ function CrudInput({ callbackAdd }) {
 
       return;
     }
+
+    // power 값을 숫자로 바꾸시오.(문자열를 숫자로)
+    const newItem = {
+      name: name,
+      power: Number(power),
+    };
+
+    // CrudContainer.callbackAdd(obj) 호출.
+    callbackAdd(newItem);
+
+    // input 태그에 남아있는 입력값 지우기.
+    refInputName.current.value = null;
+    refInputPower.current.value = 0;
   };
 
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
