@@ -242,7 +242,7 @@ function TodoContainer({ ...props }) {
       </div>
 
       {/* <!-- TodoList --> */}
-      <TodoList></TodoList>
+      <TodoList todoItems={todoItems}></TodoList>
 
       {/* <!-- TodoFooter --> */}
       <TodoFooter callbackClearAll={callbackClearAll}></TodoFooter>
