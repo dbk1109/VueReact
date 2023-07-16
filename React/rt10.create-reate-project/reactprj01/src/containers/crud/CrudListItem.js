@@ -105,12 +105,8 @@ function CrudListItem({
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
     debugger;
-    // formEdit 를 formView 로 바꾸기. isEditMode = !isEditMode;
-    setIsEditMode(!isEditMode);
 
-    // 유효성 검사. CrudInput 참조하여 코드를 완성하시오
-
-    // 유효성 검사 + 부모 콜백 메서드 호출
+    // 유효성 검사 + 부모 콜백 메서드 호출. CrudInput 참조하여 코드를 완성하시오
 
     // Name 입력 여부 유효성 검사
     const name = refInputName.current.value;
@@ -144,13 +140,18 @@ function CrudListItem({
     }
 
     // power 값을 숫자로 바꾸시오.(문자열를 숫자로)
-    const newItem = {
+    const newitem = {
+      /* { id, name, power} */
+      id: item.id,
       name: name,
       power: Number(power),
     };
 
     // 부모 콜백 메서드 호출. CrudContainer.callbackSave();
-    callbackAdd(newItem);
+    callbackSave(newitem);
+
+    // formEdit 를 formView 로 바꾸기. isEditMode = !isEditMode;
+    setIsEditMode(!isEditMode);
   };
 
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
