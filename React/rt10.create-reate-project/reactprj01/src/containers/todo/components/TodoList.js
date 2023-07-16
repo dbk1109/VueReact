@@ -76,7 +76,7 @@ const StyledTodoList = styled.section`
 `;
 
 // const {...props} = props;
-function TodoList({ todoItems }) {
+function TodoList({ todoItems, callbackDoneToggle }) {
   // 이벤트 핸들러 작성.
   const handlerDoneToggle = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
@@ -121,12 +121,12 @@ function TodoList({ todoItems }) {
 
 TodoList.propTypes = {
   // props의 프로퍼티 타입 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
-  // 인자명: PropTypes.func.isRequired,
+  callbackDoneToggle: PropTypes.func.isRequired,
   todoItems: PropTypes.arrayOf(PropTypes.object),
 };
 TodoList.defaultProps = {
   // props의 디폴트 값 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
-  // 인자명: () => {},
+  callbackDoneToggle: () => {},
   todoItems: [],
 };
 

@@ -613,7 +613,7 @@
           ... 중략
         `;
 
-    step 25-07. TodoContainer 컴포넌트에서
+    step 25-06. TodoContainer 컴포넌트에서
         TodoList 컴포넌트로 상태값 todoItems 를 props 내림 설정 한다.
         // TodoContainer JSX 화면
         return (
@@ -626,7 +626,7 @@
             </StyledTodoContainer>
         );
 
-    step 25-08. TodoList 에 props 설정
+    step 25-07. TodoList 에 props 설정
         TodoList.propTypes 수정
         TodoList.defaultProps 수정
 
@@ -642,7 +642,7 @@
           todoItems: [],
         };
 
-    step 25-09. TodoList 컴포넌트 에서 map 을 사용하여 JSX 반복문 코드를 작성하시오.
+    step 25-08. TodoList 컴포넌트 에서 map 을 사용하여 JSX 반복문 코드를 작성하시오.
         const lis = todoItems &&
             todoItems.length &&
             todoItems.map((item) => {
@@ -736,7 +736,7 @@
     step 26-05. TodoContainer 컴포넌트에 callbackDoneToggle 메서드 작성
         const callbackDoneToggle = useCallback(
             (id) => {
-                // state 변경 코드를 완성하시오.
+                // state 변경 코드를 완성하시오. 복제 후 할당.
                 const newTodos =
                     todoItems &&
                     todoItems.map((item) => {
