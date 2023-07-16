@@ -32,7 +32,7 @@
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(
             <React.StrictMode>
-                <BrowserRouter>
+              <BrowserRouter>
                   <App />
               </BrowserRouter>
             </React.StrictMode>
@@ -41,6 +41,8 @@
 
     2. 라우팅 설정
         작업파일: src/App.js
+        import { Routes, Route, NavLink } from 'react-router-dom';
+        
         <div>
             <Routes>
                 <Route path="/" element={<HomeContainer />} />
