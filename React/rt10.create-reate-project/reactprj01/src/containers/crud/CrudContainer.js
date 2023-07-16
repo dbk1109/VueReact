@@ -49,14 +49,12 @@ const StyledCrudContainer = styled.div`
 // const {...props} = props;
 function CrudContainer({ ...props }) {
   // useState 를 사용한 컴포넌트의 상태값 설정
-  const [변수명, set변수명] = useState('기본값'); // 상태값이 기본타입인 경우
-  const [state, setState] = useState({ id: 0, name: '', age: 0 }); // 상태값이 참조타입 경우
-
-  // useReducer 를 사용한 컴포넌트의 상태값 설정. 리듀서는 현재 상태를 받아서 새 상태를 반환하는 함수다
-  const [리듀서, set리듀서] = useReducer(
-    (oldvalue, newvalue) => ({ ...oldvalue, ...newvalue }),
-    { id: 0, name: '', age: 0 },
-  ); // 리듀서(reducer) 방식의 상태값 설정
+  const [items, setItems] = useState([
+    { id: 1, name: '슈퍼맨', power: 100 },
+    { id: 2, name: '아쿠아맨', power: 300 },
+    { id: 3, name: '스파이더맨', power: 500 },
+    { id: 4, name: '배트맨', power: 30 },
+  ]); // 상태값이 기본타입인 경우
 
   // ref 만들기.
   // const refInput = useRef();
@@ -105,7 +103,7 @@ function CrudContainer({ ...props }) {
       <h1>Creat Read Update Delete</h1>
       <CrudInput></CrudInput>
       <hr />
-      <CrudList></CrudList>
+      <CrudList items={items}></CrudList>
     </StyledCrudContainer>
   );
 }

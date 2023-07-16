@@ -298,9 +298,7 @@
         2-4. CrudListItem 에 props 기능 추가하기
             power가 300이상인 사람은 글자색을 red, bold 로 출력되게 css를 적용하시오.
 
-            function CrudListItem({
-                item,
-            }) {
+            function CrudListItem({ item }) {
 
                 // JSX로 화면 만들기
                 let strong = "";
@@ -368,15 +366,17 @@
                     {id:3, name: "스파이더맨", power: 500},
                     {id:4, name: "배트맨", power: 30},
                 ]);
+                
                 ...중략
+                
                 return (
-                    <div id="app">
+                    <StyledCrudContainer id="app">
                         <h1>Creat Read Update Delete</h1>
                         <CrudInput></CrudInput>
                         <hr/>
                         <CrudList items={items}>
                         </CrudList>
-                    </div>
+                    </StyledCrudContainer>
                 )
             }
 
@@ -384,19 +384,19 @@
 
         "rt12-17.JSX.반복문.html"를 참고하여 JSX 반복문 코드를 추가 하시오.
 
-        function CrudList({
-            items,
-        }) {
-            const arrs = items.map( (item)=>{
+        function CrudList({ items }) {
+            ...중략
+            
+            const arrs = items && items.length && items.map( (item)=>{
                 return (
                     <CrudListItem
-                        item={item}
                         key={item.id}
+                        item={item}
                     >
                     </CrudListItem>
                 )
             });
-
+            
             // JSX로 화면 만들기
             return (
                 <table>
