@@ -157,12 +157,25 @@ function CrudContainer({ ...props }) {
   // Array에서  Array.map()과 Array.reduce()를 사용하여 max id 구하기
   const callbackAdd = useCallback(
     (newitem) => {
-      // ...생략
-      debugger;
+      // items에서 최대 id 값을 구하는 방법.
+      // 방법1. items.map()과 items.reduce()를 사용하여 max id를 구하시오.
+      let maxid = 0;
+      if (items.length > 0) {
+        maxid = items
+          .map((item) => item.id)
+          .reduce((pvalue, cvalue) => (pvalue >= cvalue ? pvalue : cvalue), -1);
+      }
+
+      const newid = maxid + 1;
+
+      // newitem 에  id 프러퍼티 추가
+      newitem.id = newid;
+
+      // items 에 추가하시오
+      // items.push(newitem);
+      setItems([...items, newitem]);
     },
-    [
-      /* 메서드와 연관되는 상태(변수)명들을 기술 */
-    ],
+    [/* 메서드와 연관되는 상태(변수)명들을 기술 */ items],
   );
 
   // 이벤트 핸들러 작성.

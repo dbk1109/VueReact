@@ -83,9 +83,38 @@ function CrudInput({ callbackAdd }) {
     console.log(e.target);
     debugger;
 
-    // 부모의 콜백 메서드 호출.
-    // CrudContainer.callbackAdd();
-    callbackAdd();
+    // 유효성 검사 + 부모 콜백 메서드 호출
+
+    // Name 입력 여부 유효성 검사
+    const name = refInputName.current.value;
+    if (!name || !name.trim()) {
+      alert('이름을 입력하세요');
+
+      //     포커스 주기
+      refInputName.current.focus();
+
+      //     이벤트 취소
+      e.stopPropagation();
+      e.preventDefault();
+
+      return;
+    }
+
+    // Power 입력 여부 유효성 검사
+    const power = refInputPower.current.value;
+    // !power <===> power !== null ||  power !== undefined ||  power !== 0
+    if (power === null || power == undefined || power < 0 || !power.trim()) {
+      alert('파워을 입력하세요');
+
+      //     포커스 주기
+      refInputPower.current.focus();
+
+      //     이벤트 취소
+      e.stopPropagation();
+      e.preventDefault();
+
+      return;
+    }
   };
 
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html

@@ -688,9 +688,6 @@
             Power 입력 여부 유효성 검사
                 포커스 주기
                 이벤트 취소
-            Power의 입력값이 숫자인지 유효성 검사.
-                포커스 주기
-                이벤트 취소
                 
             Power의 입력값을 숫자로 바꾸시오.(문자열를 숫자로)
             newitem 객체 만들기 
@@ -710,9 +707,7 @@
                     maxid = items.map( item=>item.id )
                                  .reduce( (pvalue,cvalue)=> pvalue>= cvalue ? pvalue: cvalue, -1 );
                 }
-                else {
-                    maxid = 0;
-                }
+
                 const newid = maxid + 1;
 
                 // newitem 에  id 프러퍼티 추가
@@ -856,9 +851,9 @@
                 if( isNaN( Number(refInputPower.current.value) ) ){
                     alert('파워에 숫자를 입력하세요')
                     refInputPower.current.value=""
-                    refInputPower.current.focus()
-                    event.preventDefault()
-                    return false
+                    refInputPower.current.focus();
+                    event.preventDefault();
+                    return false;
                 }
 
                 // 입력된 값을 이용해서 newitem 객체를 만든다.
