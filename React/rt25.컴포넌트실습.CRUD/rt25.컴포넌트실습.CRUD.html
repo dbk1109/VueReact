@@ -93,9 +93,11 @@
 
 
     1-02. crud 컴포넌트 트리 만들기
-        CrudContainer
-            |-- CrudInput
-            `-- CrudList
+        ./crud/
+            |-- CrudContainer.js
+            |-- CrudInput.js
+            |-- CrudList.js
+            `-- CrudListItem.js
 
         실행 화면 확인
 
@@ -142,32 +144,7 @@
                     <button type="button">Add</button>
                 </div>
             );
-        }
-
-    1-07. CrudInput 컴포넌트 수정
-
-        function CrudInput({}) {
-            // JSX로 화면 만들기
-            return (
-                <div>
-                    <div>
-                        <label htmlFor="">Name : </label>
-                        <input type="text"
-                                name="name"
-                                placeholder="이름을 입력하세요"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="">Power : </label>
-                        <input type="number"
-                                name="power"
-                                placeholder="숫자를 입력하세요"
-                        />
-                    </div>
-                    <button type="button">Add</button>
-                </div>
-            );
-        }
+        }}
 
     1-08. CrudContainer 에 CrudInput 컴포넌트 추가하기
         function CrudContainer({}) {
@@ -196,7 +173,7 @@
 
             // JSX로 화면 만들기
             return (
-                <table>
+                <StyledCrudList>
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -218,7 +195,7 @@
                             </td>
                         </tr>
                     </tbody>
-                </table>
+                </StyledCrudList>
             )
         }
 
