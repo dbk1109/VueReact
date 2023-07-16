@@ -38,17 +38,11 @@ function CrudListItem({
   callbackSave,
 }) {
   // useState 를 사용한 컴포넌트의 상태값 설정
-  const [변수명, set변수명] = useState('기본값'); // 상태값이 기본타입인 경우
-  const [state, setState] = useState({ id: 0, name: '', age: 0 }); // 상태값이 참조타입 경우
-
-  // useReducer 를 사용한 컴포넌트의 상태값 설정. 리듀서는 현재 상태를 받아서 새 상태를 반환하는 함수다
-  const [리듀서, set리듀서] = useReducer(
-    (oldvalue, newvalue) => ({ ...oldvalue, ...newvalue }),
-    { id: 0, name: '', age: 0 },
-  ); // 리듀서(reducer) 방식의 상태값 설정
+  const [isEditMode, setIsEditMode] = useState(true); // 상태값이 기본타입인 경우
 
   // ref 만들기.
-  // const refInput = useRef();
+  const refInputName = useRef();
+  const refInputPower = useRef();
 
   // refIsMounted는 생명주기의 마운트와 업데이트를 구분하기 위한 ref
   const refIsMounted = useRef(false);
@@ -110,7 +104,7 @@ function CrudListItem({
   let strong = '';
   if (item.power >= 300) strong = 'strong';
 
-  return (
+  const formView = (
     <StyledCrudListItem className={strong}>
       <td>{item.id}</td>
       <td>{item.name}</td>
@@ -131,6 +125,47 @@ function CrudListItem({
       </td>
     </StyledCrudListItem>
   );
+
+  const formEdit = (
+    <StyledCrudListItem className={strong}>
+      <td>{item.id}</td>
+      <td>
+        <input
+          type="text"
+          name="name"
+          placeholder="이름을 입력하세요"
+          defaultValue={item.name}
+          ref={refInputName}
+        />
+      </td>
+      <td>
+        <input
+          type="number"
+          name="power"
+          placeholder="숫자를 입력하세요"
+          defaultValue={item.power}
+          ref={refInputPower}
+        />
+      </td>
+      <td>
+        <button type="button" onClick={handlerDel}>
+          Del
+        </button>
+        <button type="button" onClick={handlerUp}>
+          Power Up
+        </button>
+        <button type="button" onClick={handlerDown}>
+          Power Down
+        </button>
+        <button type="button" onClick={handlerEdit}>
+          Edit
+        </button>
+      </td>
+    </StyledCrudListItem>
+  );
+
+  if (isEditMode === false) return formView;
+  else return formEdit;
 }
 
 CrudListItem.propTypes = {
