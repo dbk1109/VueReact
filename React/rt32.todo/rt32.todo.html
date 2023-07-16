@@ -350,10 +350,10 @@
           . for 속성 ===> htmlFor
           . value 속성 ===> defaultValue
 
-    step 21-4. 실행 화면 확인
-
-    step 21-5. styled-components 를 이용하여 TodoContainer 컴포넌트 스타일링하기
+    step 21-4. styled-components 를 이용하여 TodoContainer 컴포넌트 스타일링하기
         1차/style.css 파일의 내용을 참고하여 css 코드를 StyledTodoContainer 에 추가한다.
+
+    step 21-5. 실행 화면 확인
 
     step 21-6. TodoContainer 의 JSX 에서 modal 창 숨기기 기능 추가하기
         변경 전: <div class="modal-mask">
@@ -644,7 +644,7 @@
 
     step 25-09. TodoList 컴포넌트 에서 map 을 사용하여 JSX 반복문 코드를 작성하시오.
         const lis = todoItems &&
-            todoItems.length > 0 &&
+            todoItems.length &&
             todoItems.map((item) => {
             return (
                 <li key={item.id} className={item.done ? 'checked' : null}>
@@ -675,23 +675,25 @@
     step 26-01. TodoList 의 JSX에
         li 태그에 onClick 설정한다.
 
-        const lis = todoItems && todoItems.map((item) => {
-          return (
-            <li
-                key={item.id}
-                className={item.done ? 'checked' : null}
-                data-id={item.id}
-                data-item={JSON.stringify(item)}
-                onClick={handlerDoneToggle}
-            >
-                <i aria-hidden="true" className="checkBtn fas fa-check"></i>
-                {item.todo}
-                <span type="button" className="removeBtn">
-                    <i aria-hidden="true" className="far fa-trash-alt"></i>
-                </span>
-            </li>
-          );
-        });
+        const lis = todoItems &&
+          todoItems.length && 
+          todoItems.map((item) => {
+            return (
+              <li
+                  key={item.id}
+                  className={item.done ? 'checked' : null}
+                  data-id={item.id}
+                  data-item={JSON.stringify(item)}
+                  onClick={handlerDoneToggle}
+              >
+                  <i aria-hidden="true" className="checkBtn fas fa-check"></i>
+                  {item.todo}
+                  <span type="button" className="removeBtn">
+                      <i aria-hidden="true" className="far fa-trash-alt"></i>
+                  </span>
+              </li>
+            );
+          });
 
     step 26-02. TodoList 에 handlerDoneToggle 이벤트 핸들러 작성
 

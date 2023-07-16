@@ -32,7 +32,7 @@ const StyledPageHome = styled.div`
    * 스타일 설정: https://styled-components.com/docs/basics#adapting-based-on-props
    * 스타일 상속: https://velog.io/@hwang-eunji/Styled-Components-리액트-스타일-컴포넌트
    */
-  ul > li {
+  & > ul > li {
     display: inline-block;
     padding: 20px 40px;
   }
