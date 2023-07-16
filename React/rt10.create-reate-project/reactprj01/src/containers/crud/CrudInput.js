@@ -42,7 +42,8 @@ function CrudInput({ callbackAdd }) {
   ); // 리듀서(reducer) 방식의 상태값 설정
 
   // ref 만들기.
-  // const refInput = useRef();
+  const refInputName = useRef();
+  const refInputPower = useRef();
 
   // refIsMounted는 생명주기의 마운트와 업데이트를 구분하기 위한 ref
   const refIsMounted = useRef(false);
@@ -92,11 +93,23 @@ function CrudInput({ callbackAdd }) {
     <StyledCrudInput>
       <div>
         <label htmlFor="">Name2 : </label>
-        <input type="text" name="name" placeholder="이름을 입력하세요" />
+        <input
+          type="text"
+          name="name"
+          placeholder="이름을 입력하세요"
+          defaultValue={''}
+          ref={refInputName}
+        />
       </div>
       <div>
         <label htmlFor="">Power2 : </label>
-        <input type="number" name="power" placeholder="숫자를 입력하세요" />
+        <input
+          type="number"
+          name="power"
+          placeholder="숫자를 입력하세요"
+          defaultValue={0}
+          ref={refInputPower}
+        />
       </div>
       <button type="button" onClick={handlerAdd}>
         Add2
