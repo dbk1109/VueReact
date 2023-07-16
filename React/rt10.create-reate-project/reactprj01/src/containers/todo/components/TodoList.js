@@ -81,7 +81,6 @@ function TodoList({ todoItems, callbackDoneToggle, callbackRemoveTodo }) {
   const handlerDoneToggle = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
-    debugger;
 
     const id = Number(e.target.dataset.id); // data-id. Number() : 문자열을 숫자로 변환
     const item = JSON.parse(e.target.dataset.item); // data-item

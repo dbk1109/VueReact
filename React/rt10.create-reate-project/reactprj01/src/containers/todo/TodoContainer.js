@@ -86,7 +86,6 @@ function TodoContainer({ ...props }) {
     (param) => {
       // state 변경
       // setTodoItems 는  todoItems 상태를 바꾸기 위한 setter 메서드
-      debugger;
       setTodoItems([]); // todoItems = [];
     },
     [
@@ -98,7 +97,6 @@ function TodoContainer({ ...props }) {
     (id) => {
       // state 변경
       // setTodoItems 는  todoItems 상태를 바꾸기 위한 setter 메서드
-      debugger;
       const newTodos =
         todoItems &&
         todoItems.map((item) => {
@@ -119,7 +117,6 @@ function TodoContainer({ ...props }) {
     (id) => {
       // state 변경
       // setTodoItems 는  todoItems 상태를 바꾸기 위한 setter 메서드
-      debugger;
       const newTodos =
         todoItems &&
         todoItems.filter((item) => {
@@ -140,7 +137,6 @@ function TodoContainer({ ...props }) {
     (value) => {
       // state 변경
       // setTodoItems 는  todoItems 상태를 바꾸기 위한 setter 메서드
-      debugger;
 
       // map과 reduce 를 사용하여 max id 구하기 ==> newid 만들기
       // todoItems 추가할 객체 만들기

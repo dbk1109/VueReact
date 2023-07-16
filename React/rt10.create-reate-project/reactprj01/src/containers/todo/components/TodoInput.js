@@ -199,7 +199,6 @@ function TodoInput({ callbackAddTodo }) {
     }
 
     // TodoContainer 의 callbackAddTodo 메서드 호출 기능 추가
-    debugger;
     callbackAddTodo(value);
 
     // add 후에 input 태그의 입력 값 지우기.
