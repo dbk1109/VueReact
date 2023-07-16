@@ -25,6 +25,7 @@ import {
 import TodoHeader from './components/TodoHeader';
 import TodoFooter from './components/TodoFooter';
 import TodoList from './components/TodoList';
+import TodoInput from './components/TodoInput';
 
 const StyledTodoContainer = styled.div`
   /* &로 자기 자신을 나타내고 삼항연산자, &&,|| 문을 쓸수 있다
@@ -39,113 +40,6 @@ const StyledTodoContainer = styled.div`
   & {
     text-align: center;
     /* background-color: #f6f6f8; */
-  }
-
-  h1 {
-    color: #2f3b52;
-    font-weight: 900;
-    margin: 2.5rem 0 1.5rem;
-  }
-
-  button {
-    border-style: groove;
-  }
-
-  input {
-    border-style: groove;
-    width: 200px;
-  }
-
-  .shadow {
-    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03);
-  }
-
-  input:focus {
-    outline: none;
-  }
-
-  .inputBox {
-    background: white;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 5px;
-  }
-
-  .inputBox input {
-    border-style: none;
-    font-size: 0.9rem;
-  }
-
-  .addContainer {
-    float: right;
-    background: linear-gradient(to right, #6478fb, #8763fb);
-    display: inline-block;
-    width: 3rem;
-    border-radius: 0 5px 5px 0;
-  }
-
-  .addBtn {
-    color: white;
-    vertical-align: middle;
-  }
-
-  .closeModalBtn {
-    color: #62acde;
-  }
-
-  .modal-mask {
-    position: fixed;
-    z-index: 9998;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: table;
-    transition: opacity 0.3s ease;
-  }
-
-  .modal-wrapper {
-    display: table-cell;
-    vertical-align: middle;
-  }
-
-  .modal-container {
-    width: 300px;
-    margin: 0px auto;
-    padding: 20px 30px;
-    background-color: #fff;
-    border-radius: 2px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-    transition: all 0.3s ease;
-    font-family: Helvetica, Arial, sans-serif;
-  }
-
-  .modal-header h3 {
-    margin-top: 0;
-    color: #62acde;
-  }
-
-  .modal-body {
-    margin: 20px 0;
-  }
-
-  .modal-default-button {
-    float: right;
-  }
-
-  .modal-enter {
-    opacity: 0;
-  }
-
-  .modal-leave-active {
-    opacity: 0;
-  }
-
-  .modal-enter .modal-container,
-  .modal-leave-active .modal-container {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
   }
 `;
 
@@ -200,7 +94,6 @@ function TodoContainer({ ...props }) {
       todoItems,
     ],
   );
-
   const callbackDoneToggle = useCallback(
     (id) => {
       // state 변경
@@ -243,6 +136,21 @@ function TodoContainer({ ...props }) {
       todoItems,
     ],
   );
+  const callbackAddTodo = useCallback(
+    (value) => {
+      // state 변경
+      // setTodoItems 는  todoItems 상태를 바꾸기 위한 setter 메서드
+      debugger;
+
+      // map과 reduce 를 사용하여 max id 구하기 ==> newid 만들기
+      // todoItems 추가할 객체 만들기
+      // 배열에 추가. todoItems = [...todoItems, newTodo];
+    },
+    [
+      /* 연관배열: 콜백 메서드에서 변경하고자 하는 연관되는 상태(변수)명들을 기술 */
+      todoItems,
+    ],
+  );
 
   // 이벤트 핸들러 작성.
   const handler = (e) => {
@@ -257,32 +165,7 @@ function TodoContainer({ ...props }) {
       <TodoHeader></TodoHeader>
 
       {/* <!-- TodoInput --> */}
-      <div className="inputBox shadow">
-        <input type="text" placeholder="Type what you have to do" />
-        <span className="addContainer">
-          <i aria-hidden="true" className="addBtn fas fa-plus"></i>
-        </span>
-
-        <div className="modal-mask" style={{ display: 'none' }}>
-          <div className="modal-wrapper">
-            <div className="modal-container">
-              <div className="modal-header">
-                <h3 slot="header">경고</h3>
-              </div>
-
-              <div className="modal-footer">
-                <span>
-                  할 일을 입력하세요.
-                  <i
-                    className="closeModalBtn fas fa-times"
-                    aria-hidden="true"
-                  ></i>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <TodoInput callbackAddTodo={callbackAddTodo}></TodoInput>
 
       {/* <!-- TodoList --> */}
       <TodoList
@@ -290,7 +173,6 @@ function TodoContainer({ ...props }) {
         callbackDoneToggle={callbackDoneToggle}
         callbackRemoveTodo={callbackRemoveTodo}
       ></TodoList>
-
       {/* <!-- TodoFooter --> */}
       <TodoFooter callbackClearAll={callbackClearAll}></TodoFooter>
     </StyledTodoContainer>
