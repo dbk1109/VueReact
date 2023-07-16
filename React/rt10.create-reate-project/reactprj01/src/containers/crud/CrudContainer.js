@@ -131,6 +131,7 @@ function CrudContainer({ ...props }) {
   const callbackAdd = useCallback(
     (newitem) => {
       // ...생략
+      debugger;
     },
     [
       /* 메서드와 연관되는 상태(변수)명들을 기술 */
@@ -147,7 +148,7 @@ function CrudContainer({ ...props }) {
   return (
     <StyledCrudContainer id="app">
       <h1>Creat Read Update Delete</h1>
-      <CrudInput></CrudInput>
+      <CrudInput callbackAdd={callbackAdd}></CrudInput>
       <hr />
       <CrudList
         items={items}

@@ -30,7 +30,7 @@ const StyledCrudInput = styled.div`
 `;
 
 // const {...props} = props;
-function CrudInput({ ...props }) {
+function CrudInput({ callbackAdd }) {
   // useState 를 사용한 컴포넌트의 상태값 설정
   const [변수명, set변수명] = useState('기본값'); // 상태값이 기본타입인 경우
   const [state, setState] = useState({ id: 0, name: '', age: 0 }); // 상태값이 참조타입 경우
@@ -77,9 +77,14 @@ function CrudInput({ ...props }) {
   );
 
   // 이벤트 핸들러 작성.
-  const handler = (e) => {
+  const handlerAdd = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
+    debugger;
+
+    // 부모의 콜백 메서드 호출.
+    // CrudContainer.callbackAdd();
+    callbackAdd();
   };
 
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
@@ -93,7 +98,9 @@ function CrudInput({ ...props }) {
         <label htmlFor="">Power2 : </label>
         <input type="number" name="power" placeholder="숫자를 입력하세요" />
       </div>
-      <button type="button">Add2</button>
+      <button type="button" onClick={handlerAdd}>
+        Add2
+      </button>
     </StyledCrudInput>
   );
 }
@@ -102,11 +109,13 @@ CrudInput.propTypes = {
   // props의 프로퍼티 타입 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
   // 인자명: PropTypes.func.isRequired,
   // 인자명: PropTypes.arrayOf(PropTypes.object),
+  callbackAdd: PropTypes.func.isRequired,
 };
 CrudInput.defaultProps = {
   // props의 디폴트 값 설정. https://ko.reactjs.org/docs/typechecking-with-proptypes.html
   // 인자명: () => {},
   // 인자명: [],
+  callbackAdd: () => {},
 };
 
 export default CrudInput; // React.memo(CrudInput); // React.memo()는 props 미변경시 컴포넌트 리렌더링 방지 설정
