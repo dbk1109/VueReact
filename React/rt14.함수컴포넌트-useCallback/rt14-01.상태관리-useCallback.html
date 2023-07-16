@@ -124,7 +124,7 @@
 
     // callback 메서드 작성. callback 메서드는 부모의 공유 상태값을 변경하기 위해서 사용된다.
     const callbackChildMessage = useCallback((param) => {
-      debugger;
+
       console.log(param);
       setParentText(param);
       setChildMessage(param);
@@ -155,7 +155,7 @@
     const handlerChild = (e) => {
       // 이벤트 핸들러는 화살표 함수로 만든다
       console.log(e.target);
-      debugger;
+
 
       // 부모 컴포넌트(Parent)의 callback 메서드 호출.
       callbackChildMessage(childText + new Date().toLocaleTimeString())

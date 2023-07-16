@@ -881,8 +881,8 @@
         5-9. CrudContainer 의 callbackSave 완성한다.
           const callbackSave = useCallback(
             (newitem) => {
-              // newitem 으로 바뀐 새로운 배열 만들기.
-              // Array.map() 을 사용
+              // 복제후 할당
+              // newitem 으로 바뀐 새로운 배열 만들기. Array.map() 을 사용
               const newItems = items.map((item) => {
                 if (item.id === newitem.id) {
                   return newitem;

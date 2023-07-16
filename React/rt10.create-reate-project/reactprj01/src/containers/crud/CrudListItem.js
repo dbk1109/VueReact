@@ -70,7 +70,6 @@ function CrudListItem({
   const handlerDel = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
-    debugger;
 
     // 부모의 콜백 메서드 호출.
     // CrudContainer.callbackDel();
@@ -79,7 +78,6 @@ function CrudListItem({
   const handlerUp = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
-    debugger;
 
     // 부모의 콜백 메서드 호출.
     // CrudContainer.callbackUp();
@@ -88,7 +86,6 @@ function CrudListItem({
   const handlerDown = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
-    debugger;
 
     // 부모의 콜백 메서드 호출.
     // CrudContainer.callbackDown();
@@ -97,14 +94,13 @@ function CrudListItem({
   const handlerEdit = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
-    debugger;
+
     // formView  를 formEdit 로 바꾸기. isEditMode = !isEditMode;
     setIsEditMode(!isEditMode);
   };
   const handlerSave = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
-    debugger;
 
     // 유효성 검사 + 부모 콜백 메서드 호출. CrudInput 참조하여 코드를 완성하시오
 

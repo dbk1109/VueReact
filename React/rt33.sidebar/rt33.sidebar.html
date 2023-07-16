@@ -132,7 +132,7 @@
     step 13-02. SideBar 컴포넌트에 handlerIsSidebar 핸들러 만들기
       const handlerIsSidebar = (e) => {
         console.log(e.targer);
-        debugger;
+
         setIsSidebar(!isSidebar);
       }
 
@@ -198,7 +198,7 @@
         e.stopPropagation(); // 이벤트 버블링 방지. 이벤트 취소
         // e.preventDefault(); // 하면 페이지 이동이 안됨. a 태그의 redirect 를 막게 됨
 
-        debugger;
+
         setIsSidebar(false);
       }
 

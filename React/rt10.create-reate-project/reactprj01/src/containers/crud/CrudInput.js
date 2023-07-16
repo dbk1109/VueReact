@@ -71,10 +71,8 @@ function CrudInput({ callbackAdd }) {
   const handlerAdd = (e) => {
     // 이벤트 핸들러는 화살표 함수로 만든다
     console.log(e.target);
-    debugger;
 
     // 유효성 검사 + 부모 콜백 메서드 호출
-
     // Name 입력 여부 유효성 검사
     const name = refInputName.current.value;
     if (!name || !name.trim()) {

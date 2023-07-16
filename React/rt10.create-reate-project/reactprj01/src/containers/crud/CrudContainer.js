@@ -143,16 +143,6 @@ function CrudContainer({ ...props }) {
     ],
   );
 
-  // 새로운 값으로 수정하는 콜백 메서드 만들기. Array.map() 을 사용한다
-  const callbackSave = useCallback(
-    (newitem) => {
-      // ...생략
-    },
-    [
-      /* 메서드와 연관되는 상태(변수)명들을 기술 */
-    ],
-  );
-
   // 새로운 값을 추가하는 콜백 메서드 만들기.
   // Array에서  Array.map()과 Array.reduce()를 사용하여 max id 구하기
   const callbackAdd = useCallback(
@@ -178,11 +168,29 @@ function CrudContainer({ ...props }) {
     [/* 메서드와 연관되는 상태(변수)명들을 기술 */ items],
   );
 
-  // 이벤트 핸들러 작성.
-  const handler = (e) => {
-    // 이벤트 핸들러는 화살표 함수로 만든다
-    console.log(e.target);
-  };
+  // 새로운 값으로 수정하는 콜백 메서드 만들기. Array.map() 을 사용한다
+  const callbackSave = useCallback(
+    (newitem) => {
+      // ...생략
+
+      // 복제 후 할당
+      const newitems =
+        items &&
+        items.length &&
+        items.map((obj) => {
+          if (obj.id === newitem.id) return newitem;
+
+          return obj;
+        });
+
+      // 할당
+      setItems(newitems);
+    },
+    [
+      /* 메서드와 연관되는 상태(변수)명들을 기술 */
+      items,
+    ],
+  );
 
   // JSX로 화면 만들기. 조건부 렌더링: https://ko.reactjs.org/docs/conditional-rendering.html
   return (
