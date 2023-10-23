@@ -16,7 +16,7 @@
     다른 파일에 설정해야 함.
     위치: /data/user-data/User/setting.json
   */
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
 
   /*
     workbench 관련 설정은 프로젝트 .vscode/setting.json 에서는 정상 작동하지 않음.
