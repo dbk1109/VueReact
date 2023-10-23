@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+    <title>Vue Instance Lifecycle</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- CSS import -->
+    <link rel="stylesheet"
+      href="../css/reset.css">
+
+  </head>
+
+  <body>
+    <xmp>
+
+        Vue 라이프 사이클 단계 속성과 목적을 이해한다
+
+        Vue 라이프 사이클 updated 단계가 실행되게 하려면 어떻게 하면 되는가?
+
+        updated 단계는 화면의 렌더링 이 된 후에 실행된다.
+
+        기능 추가
+            1. 버튼을 만들고 클릭(click) 이벤트를 설정한다.
+               버튼 추가와 클릭(click) 이벤트 핸들러 작성 시 vue13-10 예제를 참조하시오
+               v-on:click="이벤트핸들러"
+               <button v-on:click="btnClick">Vue 버튼</button>
+            2. 버튼을 클릭하면 message 값을 자신의 이름으로 바꾼다.
+
+        [참조]page 49, 104 소스 5번항 참조.
+    </xmp>
+    <hr />
+
+    <div id="app">
+      {{ message }}
+      <!-- 버튼 기능 추가-->
+      <button v-on:click="btnClick">Vue 버튼</button>
+    </div>
+
+  </body>
+</html>
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.7.8/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+  new Vue({
+    /* edtmc^2w */
+    el: '#app',
+    data: {
+      /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+      message: 'Hello Vue.js!!!',
+    },
+    methods: {
+      /* 이벤트 핸들러 등록 + 일반 함수 */
+      btnClick(e) {
+        console.log(e.target);
+        this.$data.message = new Date().toLocaleTimeString();
+      }
+    },
+    beforeCreate() {
+      console.log("beforeCreate");
+    },
+    created() {
+      console.log("created", this.$data.message);
+      debugger;
+    },
+    beforeMount() {
+      console.log("beforeMount");
+    },
+    mounted() {
+      console.log("mounted");
+      debugger;
+    },
+    beforeUpdate() {
+      console.log("beforeUpdate");
+    },
+    updated() {
+      console.log("updated");
+      debugger;
+    },
+  });
+
+</script>
