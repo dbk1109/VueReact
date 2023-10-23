@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <xmp>
+        jQueyry를 사용하여 "Hello, jQuery!!!!" 를 출력한다.
+    </xmp>
+    <hr />
+
+    <div id="app">
+        <p></p>
+        <button>click me</button>
+    </div>
+    
+</body>
+
+</html>
+
+<script src="../jquery-3.4.1.js"></script>
+<script>
+    // $('button').click(function(){ -->on을 사용하기
+    $('button').on('click',function(){
+        $('#app > p').text('Hello, jQuery!!!!');
+    });
+</script>
